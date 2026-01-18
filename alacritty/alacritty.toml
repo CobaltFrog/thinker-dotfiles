@@ -1,0 +1,18 @@
+[general]
+#import = [ "./themes/thinker.toml"]
+
+[window]
+decorations = "None"
+blur = true
+opacity = 0.7
+
+[font]
+normal = { family = "Monaspace Neon NF", style = "Regular" }
+bold = { style = "Bold"}
+
+[cursor]
+style = { "Underline", "On"}
+
+[mouse]
+hide_when_typing = true
+

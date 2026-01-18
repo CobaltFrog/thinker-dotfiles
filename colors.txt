@@ -1,0 +1,27 @@
+  ___ ___ | | ___  _ __ ___ 
+ / __/ _ \| |/ _ \| '__/ __|
+| (_| (_) | | (_) | |  \__ \
+ \___\___/|_|\___/|_|  |___/
+                            
+background-normal = 2c2a24
+background-light = 3a372f
+background-dark = 000000
+
+foreground-normal = 4a9191
+foreground-dark = 1b586e
+foreground-light = 38bed6
+
+second-foreground-normal = 272f8a
+second-foreground-light = 1745eb
+second-foreground-dark = 110a4f
+
+accent-normal = 5b1978
+accent-light = a015b3
+accent-dark = 290645
+
+text-normal = ffffff
+text-light = e6dfd1
+text-dark = b09f79
+
+error = bd3131
+success = 31bd38

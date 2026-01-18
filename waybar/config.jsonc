@@ -1,0 +1,225 @@
+{
+    "layer": "top",
+    "position": "top",
+    "spacing": 5,
+    "output": [ "HDMI-A-1" ],
+    "reload_style_on_change": true,
+    "fixed-center": true,
+
+    "modules-left": [
+        "group/tools",
+        "mpris"
+    ],
+
+    "modules-center": [
+        "group/information"
+    ],
+
+    "modules-right": [
+        "group/hardware",
+        "group/system",
+        "group/clock"
+    ],
+
+
+//  ____ _   _ ____ _____ ___  __  __ 
+// / ___| | | / ___|_   _/ _ \|  \/  |
+//| |   | | | \___ \ | || | | | |\/| |
+//| |___| |_| |___) || || |_| | |  | |
+// \____|\___/|____/ |_| \___/|_|  |_|
+
+    "custom/separator-empty": {
+        "format": " ",
+        "tooltip": false
+    },
+
+    "custom/separator-center": {
+        "format": " <b>|</b> ",
+        "tooltip": false
+    },
+
+    "custom/separator-left":{
+        "format": " <b>[</b> ",
+        "tooltip": false,
+        "on-scroll-up": ""
+    },
+
+    "custom/separator-right":{
+        "format": " <b>]</b> ",
+        "tooltip": false
+    },
+
+// __  __  ___  ____  _   _ _     _____ ____
+//|  \/  |/ _ \|  _ \| | | | |   | ____/ ___| 
+//| |\/| | | | | | | | | | | |   |  _| \___ \ 
+//| |  | | |_| | |_| | |_| | |___| |___ ___) |
+//|_|  |_|\___/|____/ \___/|_____|_____|____/ 
+    "mpris": {
+        "on-click": "playerctl next",
+        "on-click-right": "playerctl previous",
+        "on-click-middle": "playerctl play-pause",
+        "format": "<b>[ {status_icon} | {title} - {artist} ]</b>",
+        "title-len": 30,
+        "artist-len": 15,
+        "tooltip-format": "󰠃 {artist}\n󰝚 {title}\n󰎆 {album}",
+        "status-icons": {
+            "playing": "▶",
+            "paused": "",
+            "stopped": ""
+        },
+        "on-scroll-up": "playerctl volume 2+",
+        "on-scroll-down": "playerctl volume 2-"
+    },
+
+// hardware
+    "cpu": {
+        "format": "<b>CPU: {usage}%</b>",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+        "tooltip": false 
+    },
+
+    "memory": {
+        "format": "<b>RAM: {percentage}%</b>",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+        "tooltip": false
+    },
+
+    "disk": {
+        "format": "<b><big>󰉉</big> {percentage_used}%</b>",
+        "tooltip-format": "{used}/{free}",
+        "unit": "GiB"
+    },
+
+    "network": {
+        "interval": 2,
+        "format": "<b>{ifname}</b>",
+        "format-ethernet": "<b><big>󰛳</big> {ipaddr}</b>",
+        "format-wifi": "{icon} {ipaddr}",
+        "format-disconnetcted": "󰲛",
+        "format-disabled": "󰱟",
+        "fomat-icons": [
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "tooltip": true,
+        "tooltip-format-ethernet": "󰛳 <b>{ifname}</b>: {ipaddr}/{cidr} - {gwaddr}\n󰾆 {bandwidthUpBytes}\\{bandwidthDownBytes}",
+        "tooltip-format-wifi": "{icon} {essid}:{frequency}\n<b>{ifname}</b>:{ipaddr}/{cidr} - {gwaddr}\n󰾆 {bandwidthUpBytes}\\{bandwidthDownBytes}",
+        "tooltip-format-disconnected": "󰲛 <b>{ifname}</b>: disconnected",
+        "tooltip-format-disabled": "󰱟 <b>{ifname}</b>: disabled"
+    },
+    
+// software
+    "wireplumpber": {
+        "format": "<b>{icon}</b> {volume}%",
+        "format-muted": "󰸈",
+        "tooltip": false,
+        "format-icons": [
+            "󰕿",
+            "󰖀",
+            "󰕾"
+        ]
+    },
+
+    "clock": {
+        "format-alt" : "<b>{:%d.%m.%y}</b>",
+        //"tooltip": false,
+        "tooltip": "{calendar}"
+        //"calendar": {
+        //    "mode"          : "year",
+        //    "mode-mon-col"  : 3,
+        //    "weeks-pos"     : "right",
+        //    "on-scroll"     : 1,
+        //    "format": {
+        //        "months":     "{}",
+        //        "days":       "{}",
+        //        "weeks":      "{}",
+        //        "weekdays":   "{}",
+        //        "today":      "{}"
+        //    }
+        //}
+    },
+
+//  ____ ____   ___  _   _ ____  ____  
+// / ___|  _ \ / _ \| | | |  _ \/ ___| 
+//| |  _| |_) | | | | | | | |_) \___ \ 
+//| |_| |  _ <| |_| | |_| |  __/ ___) |
+// \____|_| \_\\___/ \___/|_|   |____/ 
+                                     
+    "group/tools": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/separator-left",
+            "hyprland/workspaces",
+            "custom/separator-right",
+            "custom/separator-empty"
+        ] 
+    },
+
+    "group/information": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/separator-left",
+            "hyprland/window",
+            "custom/separator-right"
+        ]
+    },
+
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/separator-left",
+            "cpu",
+            "memory",
+            "disk",
+            "custom/separator-right"
+        ] 
+    },
+
+    "group/system": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/separator-left",
+            "network",
+            "wireplumber",
+            "custom/separator-right"
+        ]
+    },
+
+    "group/clock": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/separator-left",
+            "clock",
+            "custom/separator-right"
+        ]
+    },
+
+
+// _   ___   ______  ____  _        _    _   _ ____  
+//| | | \ \ / /  _ \|  _ \| |      / \  | \ | |  _ \ 
+//| |_| |\ V /| |_) | |_) | |     / _ \ |  \| | | | |
+//|  _  | | | |  __/|  _ <| |___ / ___ \| |\  | |_| |
+//|_| |_| |_| |_|   |_| \_\_____/_/   \_\_| \_|____/ 
+                                                   
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "active-only": false,
+        "on-click": "activate",
+        "format": "<b>#{icon}</b>",
+        "peristent-workspaces": {
+            "*": 2
+        }
+    },
+
+    "hyprland/window": {
+        "format": "<b>{title}</b>",
+        "tooltip": false,
+        "max-length": 25,
+        "icon": false
+        //"rewrite": {
+        //    
+        //} 
+    }
+}

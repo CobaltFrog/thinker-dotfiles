@@ -2,7 +2,6 @@
     "layer": "top",
     "position": "top",
     "spacing": 5,
-    "output": [ "HDMI-A-1" ],
     "reload_style_on_change": true,
     "fixed-center": true,
 
@@ -44,7 +43,7 @@
         "on-scroll-up": ""
     },
 
-    "custom/separator-right":{
+    "custom/separator-right": {
         "format": " <b>]</b> ",
         "tooltip": false
     },
@@ -59,7 +58,7 @@
         "on-click-right": "playerctl previous",
         "on-click-middle": "playerctl play-pause",
         "format": "<b>[ {status_icon} | {title} - {artist} ]</b>",
-        "title-len": 30,
+        "title-len": 20,
         "artist-len": 15,
         "tooltip-format": "󰠃 {artist}\n󰝚 {title}\n󰎆 {album}",
         "status-icons": {
@@ -72,20 +71,37 @@
     },
 
 // hardware
+    "battery": {
+        "format": "<b>{icon} {capacity}%</b>",
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ],
+    },
+
     "cpu": {
-        "format": "<b>CPU: {usage}%</b>",
+        "format": "<b>CPU: {usage}% | {icon}</b>",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-        "tooltip": false 
+        "tooltip": true
     },
 
     "memory": {
-        "format": "<b>RAM: {percentage}%</b>",
+        "format": "<b>RAM: {percentage}% | {icon}</b>",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-        "tooltip": false
+        "tooltip": true
     },
 
     "disk": {
-        "format": "<b><big>󰉉</big> {percentage_used}%</b>",
+        "format": "<b>󰉉 {percentage_used}%</b>",
         "tooltip-format": "{used}/{free}",
         "unit": "GiB"
     },
@@ -97,17 +113,17 @@
         "format-wifi": "{icon} {ipaddr}",
         "format-disconnetcted": "󰲛",
         "format-disabled": "󰱟",
-        "fomat-icons": [
+        "format-icons": [
             "󰤟",
             "󰤢",
             "󰤥",
             "󰤨"
         ],
         "tooltip": true,
-        "tooltip-format-ethernet": "󰛳 <b>{ifname}</b>: {ipaddr}/{cidr} - {gwaddr}\n󰾆 {bandwidthUpBytes}\\{bandwidthDownBytes}",
-        "tooltip-format-wifi": "{icon} {essid}:{frequency}\n<b>{ifname}</b>:{ipaddr}/{cidr} - {gwaddr}\n󰾆 {bandwidthUpBytes}\\{bandwidthDownBytes}",
-        "tooltip-format-disconnected": "󰲛 <b>{ifname}</b>: disconnected",
-        "tooltip-format-disabled": "󰱟 <b>{ifname}</b>: disabled"
+        "tooltip-format-ethernet": "󰛳 {ifname}: {ipaddr}/{cidr} - {gwaddr}\n󰾆 {bandwidthUpBytes}|{bandwidthDownBytes}",
+        "tooltip-format-wifi": "{icon} {essid}@{frequency}Hz\n{ifname}:{ipaddr}/{cidr} - {gwaddr}\n󰾆 {bandwidthUpBytes}|{bandwidthDownBytes}",
+        "tooltip-format-disconnected": "󰲛 {ifname}: disconnected",
+        "tooltip-format-disabled": "󰱟 {ifname}: disabled"
     },
     
 // software
@@ -123,7 +139,8 @@
     },
 
     "clock": {
-        "format-alt" : "<b>{:%d.%m.%y}</b>",
+        "format": "<b>{:%H:%M}</b>",
+        "format-alt": "<b>{:%d.%m.%y}</b>",
         //"tooltip": false,
         "tooltip": "{calendar}"
         //"calendar": {
@@ -173,6 +190,7 @@
             "cpu",
             "memory",
             "disk",
+            "battery",
             "custom/separator-right"
         ] 
     },

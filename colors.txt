@@ -8,21 +8,23 @@ background-normal = 2c2a24
 background-light = 3a372f
 background-dark = 14161B
 
-foreground-normal = 4a9191
-foreground-dark = 1b586e
-foreground-light = 38bed6
+# orange
+foreground-normal = fbad30
+foreground-dark = cc820c
+foreground-light = fac269
 
-second-foreground-normal = 272f8a
-second-foreground-light = 1745eb
-second-foreground-dark = 110a4f
+second-foreground-normal = 36d67b
+second-foreground-light = 61f2a0
+second-foreground-dark = 09963b
 
-accent-normal = 5b1978
-accent-light = a015b3
-accent-dark = 290645
+# cyan
+accent-normal = 4a9191
+accent-light = 73e6e6
+accent-dark = 0e9c9c
 
-text-normal = e6dfd1
+text-normal = faf7f2
 text-light = ffffff
-text-dark = b09f79
+text-dark = d4c7c7
 
 error-color = bd3131
 success-color = 31bd38

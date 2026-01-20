@@ -1,19 +1,15 @@
-#/ ___|  ___| |_| |_(_)_ __   __ _ ___ 
-#\___ \ / _ \ __| __| | '_ \ / _` / __|
-# ___) |  __/ |_| |_| | | | | (_| \__ \
-#|____/ \___|\__|\__|_|_| |_|\__, |___/
-#                            |___/     
+#this is an example settings. You need to modify it for your system
 
 # Monitors
-$monitor_0_name = HDMI-A-1
-$monitor_0_mode = 1920x1080@75
+$monitor_0_name = eDP-1
+$monitor_0_mode = preffered
 $monitor_0_position = 0x0
 $monitor_0_scale = 1
 $monitor_0_transform = 0
 
-$monitor_1_name = DP-3
-$monitor_1_mode = 1280x1024@75
-$monitor_1_position = -1280x0
+$monitor_1_name = HDMI-A-1
+$monitor_1_mode = preffered
+$monitor_1_position = -1920x0
 $monitor_1_scale = 1
 $monitor_1_transform = 0
 
@@ -33,14 +29,15 @@ $slave_count_for_center_master = 3
 $center_master_fallback = left
 
 # Comands
+#$cmd_exit = exit
 $cmd_exit = uwsm exit
 
 # Cursor
-$cursor_size = 15
+$cursor_size = 20
 
 # Applications
 $terminal = alacritty
-$fileManager = $terminal -e spf
+$fileManager = dolphin
 $menu = wofi
 $appsMenu = $menu --show drun
 $shellMenu = $menu --show run

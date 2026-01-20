@@ -100,13 +100,13 @@
     "cpu": {
         "format": "<b>CPU: {usage}%</b>",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-        "tooltip": true
+        "tooltip": false
     },
 
     "memory": {
         "format": "<b>RAM: {percentage}%</b>",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-        "tooltip": true
+        "tooltip": false
     },
 
     "disk": {
@@ -153,6 +153,17 @@
         "tooltip-format-disabled": "󰱟 {ifname}: disabled"
     },
     
+    "bluetooth": {
+        "format": "󰂯",
+        "format-disabled": "",
+        "format-connected": "󰂱",
+        "format-connected-battery": "󰂱",
+        "tooltip-format": "{controller_alias}\n{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\n{controller_address}\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\n{status}\n{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} {device_battery_percentage}%\n{status}\n{device_address}"
+    },
+
     "wireplumpber": {
         "format": "<b>{icon}</b> {volume}%",
         "format-muted": "󰸈",
@@ -164,13 +175,9 @@
         ]
     },
 
-    "clock#time": {
+    "clock": {
         "format": "<b>{:%H:%M}</b>",
-        "tooltip": false
-    },
-
-    "clock#date": {
-        "format": "<b>{:%d.%m.%Y}</b>",
+        "format-alt": "<b>{:%d.%m.%Y}</b>",
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "mode": "month",
@@ -181,7 +188,6 @@
                 "today":      "<span color='#4a9191'><b><u>{}</u></b></span>"
             }
         },
- 
     },
 
 //  ____ ____   ___  _   _ ____  ____  
@@ -228,6 +234,7 @@
             "custom/separator-left",
             "hyprland/language",
             "network",
+            "bluetooth",
             "wireplumber",
             "custom/separator-right"
         ]
@@ -237,8 +244,7 @@
         "orientation": "horizontal",
         "modules": [
             "custom/separator-left",
-            "clock#time",
-            "clock#date",
+            "clock",
             "custom/separator-right"
         ]
     },

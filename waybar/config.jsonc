@@ -5,6 +5,10 @@
     "reload_style_on_change": true,
     "fixed-center": true,
 
+    "include": [
+        "./monitors.jsonc"
+    ],
+
     "modules-left": [
         "group/tools",
         "mpris"
@@ -73,9 +77,9 @@
 // hardware
     "battery": {
         "format": "<b>{icon} {capacity}%</b>",
+        "tooltip-format": "󱐋 {power}W\n󰥔 {time}\n󱞯 {cycles}",
         "format-icons": [
-            "󰂎",
-            "󰁺",
+            "󰩇",
             "󰁻",
             "󰁼",
             "󰁽",
@@ -86,16 +90,21 @@
             "󰂂",
             "󰁹"
         ],
+        "states": {
+            "normal": 30,
+            "warning": 20,
+            "critical": 10
+        }
     },
 
     "cpu": {
-        "format": "<b>CPU: {usage}% | {icon}</b>",
+        "format": "<b>CPU: {usage}%</b>",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
         "tooltip": true
     },
 
     "memory": {
-        "format": "<b>RAM: {percentage}% | {icon}</b>",
+        "format": "<b>RAM: {percentage}%</b>",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
         "tooltip": true
     },
@@ -106,6 +115,24 @@
         "unit": "GiB"
     },
 
+    "backlight": {
+        "format": "<b>{icon} {percent}</b>",
+        "format-icons": [
+            "󱩎",
+            "󱩏",
+            "󱩐",
+            "󱩑",
+            "󱩒",
+            "󱩓",
+            "󱩔",
+            "󱩕",
+            "󱩖",
+            "󰛨"
+        ]
+    },
+
+
+// software
     "network": {
         "interval": 2,
         "format": "<b>{ifname}</b>",
@@ -126,7 +153,6 @@
         "tooltip-format-disabled": "󰱟 {ifname}: disabled"
     },
     
-// software
     "wireplumpber": {
         "format": "<b>{icon}</b> {volume}%",
         "format-muted": "󰸈",
@@ -138,24 +164,24 @@
         ]
     },
 
-    "clock": {
+    "clock#time": {
         "format": "<b>{:%H:%M}</b>",
-        "format-alt": "<b>{:%d.%m.%y}</b>",
-        //"tooltip": false,
-        "tooltip": "{calendar}"
-        //"calendar": {
-        //    "mode"          : "year",
-        //    "mode-mon-col"  : 3,
-        //    "weeks-pos"     : "right",
-        //    "on-scroll"     : 1,
-        //    "format": {
-        //        "months":     "{}",
-        //        "days":       "{}",
-        //        "weeks":      "{}",
-        //        "weekdays":   "{}",
-        //        "today":      "{}"
-        //    }
-        //}
+        "tooltip": false
+    },
+
+    "clock#date": {
+        "format": "<b>{:%d.%m.%Y}</b>",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "format": {
+                "days":       "<span color='#faf7f2'><b>{}</b></span>",
+                "weekdays":   "<span color='#36d67b'><b>{}</b></span>",
+                "today":      "<span color='#4a9191'><b><u>{}</u></b></span>"
+            }
+        },
+ 
     },
 
 //  ____ ____   ___  _   _ ____  ____  
@@ -191,6 +217,7 @@
             "memory",
             "disk",
             "battery",
+            "backlight",
             "custom/separator-right"
         ] 
     },
@@ -199,6 +226,7 @@
         "orientation": "horizontal",
         "modules": [
             "custom/separator-left",
+            "hyprland/language",
             "network",
             "wireplumber",
             "custom/separator-right"
@@ -209,7 +237,8 @@
         "orientation": "horizontal",
         "modules": [
             "custom/separator-left",
-            "clock",
+            "clock#time",
+            "clock#date",
             "custom/separator-right"
         ]
     },
@@ -227,7 +256,7 @@
         "on-click": "activate",
         "format": "<b>#{icon}</b>",
         "peristent-workspaces": {
-            "*": 2
+            "*": 5
         }
     },
 
@@ -239,5 +268,11 @@
         //"rewrite": {
         //    
         //} 
+    },
+
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "EN",
+        "format-ru": "RU"
     }
 }

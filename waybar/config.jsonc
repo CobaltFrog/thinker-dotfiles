@@ -175,6 +175,17 @@
         ]
     },
 
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰸈",
+        "tooltip": false,
+        "format-icons": [
+            "󰕿",
+            "󰖀",
+            "󰕾"
+        ]
+    },
+
     "clock": {
         "format": "<b>{:%H:%M}</b>",
         "format-alt": "<b>{:%d.%m.%Y}</b>",
@@ -235,7 +246,7 @@
             "hyprland/language",
             "network",
             "bluetooth",
-            "wireplumber",
+            "pulseaudio",
             "custom/separator-right"
         ]
     },

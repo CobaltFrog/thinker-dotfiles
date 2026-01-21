@@ -27,4 +27,5 @@ text-light = ffffff
 text-dark = d4c7c7
 
 error-color = bd3131
+warning-color = ffff32
 success-color = 31bd38

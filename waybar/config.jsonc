@@ -169,7 +169,7 @@
     },
 
     "wireplumpber": {
-        "format": "<b>{icon}</b> {volume}%",
+        "format": "<b>{icon} {volume}%</b>",
         "format-muted": "󰸈",
         "tooltip": false,
         "format-icons": [
@@ -180,7 +180,7 @@
     },
 
     "pulseaudio": {
-        "format": "{icon} {volume}%",
+        "format": "<b>{icon} {volume}%</b>",
         "format-muted": "󰸈",
         "tooltip": false,
         "format-icons": [

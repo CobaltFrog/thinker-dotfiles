@@ -61,14 +61,18 @@
         "on-click": "playerctl next",
         "on-click-right": "playerctl previous",
         "on-click-middle": "playerctl play-pause",
-        "format": "<b>[ {status_icon} | {title} - {artist} ]</b>",
+        "format": "<b>[ {status_icon} | {title} - {artist} | {player_icon} ]</b>",
         "title-len": 20,
         "artist-len": 15,
-        "tooltip-format": "󰠃 {artist}\n󰝚 {title}\n󰎆 {album}",
+        "tooltip-format": "󰠃 {artist}\n󰝚 {title}\n󰎆 {album}\n{player_icon} {player}",
         "status-icons": {
-            "playing": "▶",
-            "paused": "",
+            "playing": "",
+            "paused": "▶",
             "stopped": ""
+        },
+        "player-icons": {
+            "default": "󰝚",
+            "firefox": "󰈹"
         },
         "on-scroll-up": "playerctl volume 2+",
         "on-scroll-down": "playerctl volume 2-"

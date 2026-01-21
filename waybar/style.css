@@ -1,0 +1,110 @@
+@define-color background-normal #2c2a24;
+@define-color background-light #3a372f;
+@define-color background-dark #14161B;
+
+@define-color foreground-normal #fbad30;
+@define-color foreground-dark #cc820c;
+@define-color foreground-light #fac269;
+
+@define-color second-foreground-normal #36d67b;
+@define-color second-foreground-light #61f2a0;
+@define-color second-foreground-dark #09963b;
+
+@define-color accent-normal #4a9191;
+@define-color accent-light #73e6e6;
+@define-color accent-dark #0e9c9c;
+
+@define-color text-normal #faf7f2;
+@define-color text-light #ffffff;
+@define-color text-dark #d4c7c7;
+
+@define-color error-color #bd3131;
+@define-color warning-color #ffff32;
+@define-color success-color #31bd38;
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+}
+
+#custom-separator-left,
+#custom-separator-right,
+#custom-separator-empty {
+    margin: 0 5px;
+}
+#custom-separator-center {
+    margin: 0px 0px
+}
+
+window#waybar {
+    background-color: transparent;
+    border-bottom: 0;
+    color: @foreground-normal;
+}
+
+/* Waybar-modules */
+.modules-right,
+.modules-center,
+.modules-left {
+    margin: 5px 5px;
+    background-color: @background-normal;
+    border: 4px solid @foreground-normal;
+}
+
+/* Modules */
+#mpris {
+    margin: 0 7px 0 5px;
+}
+#mpris.stopped {
+    color: @background-light;
+}
+
+/*General modules style*/
+#wireplumber,
+#workspaces,
+#pulseaudio,
+#backlight,
+#bluetooth,
+#network,
+#battery,
+#memory,
+#disk,
+#cpu {
+   margin: 0 5px; 
+}
+
+#workspaces button {
+    background: transparent;
+    border: none;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    color: @foreground-normal;
+}
+#workspaces button.active {
+    color: @foreground-light;
+}
+
+#battery.warning {
+    color: @warning-color;
+}
+#battery.crirical {
+    color: @error-color;
+}
+
+#network.disconnected,
+#wireplumber.muted,
+#pulseaudio.muted,
+#battery.normal,
+#mpris.paused {
+    color: @foreground-dark;
+}
+
+/* Groups */
+#information,
+#hardware,
+#player,
+#system,
+#time,
+#tools {
+    margin: 0 5px;
+}

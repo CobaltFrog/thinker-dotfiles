@@ -1,5 +1,5 @@
 [Ll][Oo][Cc]!*
 *!*
-settings.*
-monitors.*
+hypr/settings.*
+waybar/monitors.*
 !*.exmpl

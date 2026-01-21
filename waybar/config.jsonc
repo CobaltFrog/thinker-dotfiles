@@ -11,7 +11,7 @@
 
     "modules-left": [
         "group/tools",
-        "mpris"
+        "group/player"
     ],
 
     "modules-center": [
@@ -61,7 +61,7 @@
         "on-click": "playerctl next",
         "on-click-right": "playerctl previous",
         "on-click-middle": "playerctl play-pause",
-        "format": "<b>[ {status_icon} | {title} - {artist} | {player_icon} ]</b>",
+        "format": "<b>{status_icon} | {title} - {artist} | {player_icon}</b>",
         "title-len": 20,
         "artist-len": 15,
         "tooltip-format": "󰠃 {artist}\n󰝚 {title}\n󰎆 {album}\n{player_icon} {player}",
@@ -260,6 +260,15 @@
         "modules": [
             "custom/separator-left",
             "clock",
+            "custom/separator-right"
+        ]
+    },
+
+    "group/player": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/separator-left",
+            "mpris",
             "custom/separator-right"
         ]
     },

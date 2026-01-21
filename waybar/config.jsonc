@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "spacing": 5,
+    "spacing": 0,
     "reload_style_on_change": true,
     "fixed-center": true,
 
@@ -37,18 +37,18 @@
     },
 
     "custom/separator-center": {
-        "format": " <b>|</b> ",
+        "format": "<b>|</b>",
         "tooltip": false
     },
 
     "custom/separator-left":{
-        "format": " <b>[</b> ",
+        "format": "<b>[</b>",
         "tooltip": false,
         "on-scroll-up": ""
     },
 
     "custom/separator-right": {
-        "format": " <b>]</b> ",
+        "format": "<b>]</b>",
         "tooltip": false
     },
 
@@ -216,8 +216,7 @@
         "modules": [
             "custom/separator-left",
             "hyprland/workspaces",
-            "custom/separator-right",
-            "custom/separator-empty"
+            "custom/separator-right"
         ] 
     },
 
@@ -301,7 +300,7 @@
     },
 
     "hyprland/language": {
-        "format": "{}",
+        "format": "<b>{}</b>",
         "format-en": "EN",
         "format-ru": "RU"
     }

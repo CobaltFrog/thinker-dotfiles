@@ -147,7 +147,7 @@
             "󰤨"
         ],
         "tooltip": true,
-        "tooltip-format-ethernet": "󰛳 {ifname}: {ipaddr}/{cidr} - {gwaddr}\n󰾆 {bandwidthUpBytes}|{bandwidthDownBytes}",
+        "tooltip-format-ethernet": "󰛳 {ifname}: {ipaddr}/{cidr} - {gwaddr}\n󰾆 󰇚{bandwidthDownBytes} 󰕒{bandwidthUpBytes}",
         "tooltip-format-wifi": "{icon} {essid}@{frequency}Hz\n{ifname}:{ipaddr}/{cidr} - {gwaddr}\n󰾆 {bandwidthUpBytes}|{bandwidthDownBytes}",
         "tooltip-format-disconnected": "󰲛 {ifname}: disconnected",
         "tooltip-format-disabled": "󰱟 {ifname}: disabled"
@@ -156,8 +156,8 @@
     "bluetooth": {
         "format": "󰂯",
         "format-disabled": "",
+        "format-off": "",
         "format-connected": "󰂱",
-        "format-connected-battery": "󰂱",
         "tooltip-format": "{controller_alias}\n{controller_address}",
         "tooltip-format-connected": "{controller_alias}\n{controller_address}\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\n{status}\n{device_address}",

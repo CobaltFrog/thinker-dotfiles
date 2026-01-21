@@ -140,7 +140,7 @@
     "network": {
         "interval": 2,
         "format": "<b>{ifname}</b>",
-        "format-ethernet": "<b><big>󰛳</big> {ipaddr}</b>",
+        "format-ethernet": "<b>󰛳 {ipaddr}</b>",
         "format-wifi": "{icon} {ipaddr}",
         "format-disconnetcted": "󰲛",
         "format-disabled": "󰱟",
@@ -151,8 +151,8 @@
             "󰤨"
         ],
         "tooltip": true,
-        "tooltip-format-ethernet": "󰛳 {ifname}: {ipaddr}/{cidr} - {gwaddr}\n󰾆 󰇚{bandwidthDownBytes} 󰕒{bandwidthUpBytes}",
-        "tooltip-format-wifi": "{icon} {essid}@{frequency}Hz\n{ifname}:{ipaddr}/{cidr} - {gwaddr}\n󰾆 {bandwidthUpBytes}|{bandwidthDownBytes}",
+        "tooltip-format-ethernet": "󱫋 {ifname}\n󰩠 {ipaddr}/{cidr}\n󱂇 {gwaddr}\n󰇚 {bandwidthDownBytes}\n󰕒 {bandwidthUpBytes}",
+        "tooltip-format-wifi": "{icon} {essid}@{frequency} Hz\n󱫋 {ifname}\n󰩠 {ipaddr}/{cidr}\n󱂇 {gwaddr}\n󰇚 {bandwidthDownBytes}\n󰕒 {bandwidthUpBytes}",
         "tooltip-format-disconnected": "󰲛 {ifname}: disconnected",
         "tooltip-format-disabled": "󰱟 {ifname}: disabled"
     },

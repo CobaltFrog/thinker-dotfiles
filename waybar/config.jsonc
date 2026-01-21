@@ -21,7 +21,7 @@
     "modules-right": [
         "group/hardware",
         "group/system",
-        "group/clock"
+        "group/time"
     ],
 
 
@@ -254,7 +254,7 @@
         ]
     },
 
-    "group/clock": {
+    "group/time": {
         "orientation": "horizontal",
         "modules": [
             "custom/separator-left",

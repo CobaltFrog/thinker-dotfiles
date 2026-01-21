@@ -74,8 +74,8 @@
             "default": "󰝚",
             "firefox": "󰈹"
         },
-        "on-scroll-up": "playerctl position 1+",
-        "on-scroll-down": "playerctl position 1-"
+        "on-scroll-up": "playerctl position 5+",
+        "on-scroll-down": "playerctl position 5-"
     },
 
 // hardware

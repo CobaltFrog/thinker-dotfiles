@@ -1,0 +1,66 @@
+@define-color background-normal #2c2a24;
+@define-color background-light #3a372f;
+@define-color background-dark #14161B;
+
+@define-color foreground-normal #fbad30;
+@define-color foreground-dark #cc820c;
+@define-color foreground-light #fac269;
+
+@define-color second-foreground-normal #36d67b;
+@define-color second-foreground-light #61f2a0;
+@define-color second-foreground-dark #09963b;
+
+@define-color accent-normal #4a9191;
+@define-color accent-light #73e6e6;
+@define-color accent-dark #0e9c9c;
+
+@define-color text-normal #faf7f2;
+@define-color text-light #ffffff;
+@define-color text-dark #d4c7c7;
+
+@define-color error-color #bd3131;
+@define-color warning-color #ffff32;
+@define-color success-color #31bd38;
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+}
+
+window {
+    margin: 5px;
+    border: 4px solid;
+    border-color: @foreground-normal;
+    background-color: @background-normal;
+}
+
+#input {
+    margin: 10px;
+    border: 4px;
+    border-radius: 0;
+    border-color: @foreground-normal;
+    color: @background-light;
+    background-color: transparent;
+}
+
+#entry {
+    margin: 5px 4px;
+    border: none;
+    color: @foreground-normal;
+    background-color: transparent;   
+}
+
+#entry:selected {
+    margin: 1px 0px;
+    border: 4px solid;
+    border-color: @foreground-normal;
+    background-color: transparent;    
+}
+#entry:selected #text {
+    color: @foreground-normal;
+    font-weight: bold;
+}
+
+#text:selected {
+    font-weight: bold
+    color: @foreground-normal;
+}

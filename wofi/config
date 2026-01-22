@@ -1,0 +1,16 @@
+location=center
+
+width=30%
+height=40%
+
+columns=1
+rounding=0
+
+insensitive=true
+matching=contains
+
+hide_scroll=true
+normal_window=false
+
+allow_images=true
+allow_markup=true

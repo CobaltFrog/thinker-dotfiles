@@ -7,12 +7,11 @@ blur = true
 opacity = 0.7
 
 [font]
-normal = { family = "Monaspace Neon NF", style = "Regular" }
+normal = { family = "JetBrainsMono NF", style = "Regular" }
 bold = { style = "Bold"}
 
 [cursor]
-style = { "Underline", "On"}
+style = { shape = "Block", blinking = "On"}
 
 [mouse]
 hide_when_typing = true
-

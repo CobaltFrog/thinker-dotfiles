@@ -117,7 +117,7 @@
 
     "disk": {
         "format": "<b>󰉉 {percentage_used}%</b>",
-        "tooltip-format": "{used}/{free}",
+        "tooltip-format": "{used}/{total}",
         "unit": "GiB"
     },
 

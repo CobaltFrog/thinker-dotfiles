@@ -103,12 +103,14 @@
 
     "cpu": {
         "format": "<b>CPU: {usage}%</b>",
+        "format-alt": "<b>CPU: {icon}</b>",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
         "tooltip": false
     },
 
     "memory": {
         "format": "<b>RAM: {percentage}%</b>",
+        "format-alt": "<b>RAM: {icon}</b>",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
         "tooltip": false
     },

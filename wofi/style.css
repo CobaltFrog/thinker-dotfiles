@@ -53,14 +53,9 @@ window {
     margin: 1px 0px;
     border: 4px solid;
     border-color: @foreground-normal;
-    background-color: transparent;    
+    background-color: transparent;
 }
 #entry:selected #text {
-    color: @foreground-normal;
+    color: @accent-light;
     font-weight: bold;
-}
-
-#text:selected {
-    font-weight: bold
-    color: @foreground-normal;
 }

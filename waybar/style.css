@@ -42,6 +42,15 @@ window#waybar {
     color: @foreground-normal;
 }
 
+tooltip {
+    background-color: @background-normal;
+    border-radius: 0;
+    border: 4px solid @foreground-normal;
+}
+tooltip label {
+    color: @foreground-normal;
+}
+
 /* Waybar-modules */
 .modules-right,
 .modules-center,

@@ -52,6 +52,24 @@
         "tooltip": false
     },
 
+    "custom/poweroff": {
+        "format": "<b>󰐥</b>",
+        "on-click": "systemctl poweroff",
+        "tooltip": false
+    },
+
+    "custom/reboot": {
+        "format": "<b></b>",
+        "on-click": "systemctl reboot",
+        "tooltip": false
+    },
+
+    "custom/logout": {
+        "format": "<b>󰍃</b>",
+        "on-click": "~/.config/hypr/scripts/logout.sh",
+        "tooltip": false
+    },
+
 // __  __  ___  ____  _   _ _     _____ ____
 //|  \/  |/ _ \|  _ \| | | | |   | ____/ ___| 
 //| |\/| | | | | | | | | | | |   |  _| \___ \ 
@@ -220,10 +238,24 @@
     "group/tools": {
         "orientation": "horizontal",
         "modules": [
+            "group/power",
             "custom/separator-left",
             "hyprland/workspaces",
             "custom/separator-right"
         ] 
+    },
+
+    "group/power": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "power-drawer"
+        },
+        "modules": [
+            "custom/poweroff",
+            "custom/reboot",
+            "custom/logout"
+        ]
     },
 
     "group/information": {

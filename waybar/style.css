@@ -49,6 +49,7 @@ tooltip {
 }
 tooltip label {
     color: @foreground-normal;
+    text-shadow: none;
 }
 
 /* Waybar-modules */
@@ -80,6 +81,13 @@ tooltip label {
 #disk,
 #cpu {
    margin: 0 5px; 
+}
+
+#custom-poweroff,
+#custom-reboot,
+#custom-logout {
+    font-size: 18;
+    margin: 0 10px;
 }
 
 #workspaces button {

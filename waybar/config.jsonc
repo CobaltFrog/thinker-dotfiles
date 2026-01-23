@@ -260,6 +260,20 @@
 
     "group/information": {
         "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 250,
+            "children-class": "information-drawer"
+        },
+        "modules": [
+            "group/active-window",
+            "custom/separator-left",
+            "hyprland/workspaces#taskbar",
+            "custom/separator-right"
+        ]
+    },
+
+    "group/active-window": {
+        "orientation": "inherit",
         "modules": [
             "custom/separator-left",
             "hyprland/window",
@@ -321,9 +335,25 @@
         "all-outputs": true,
         "active-only": false,
         "on-click": "activate",
-        "format": "<b>#{icon}</b>",
+        "format": "<b>{icon}{name}</b>",
+        "format-icons": {
+            "active": "@",
+            "empty": "!",
+            "default": "#"
+        },
         "peristent-workspaces": {
-            "*": 5
+            "*": 2
+        }
+    },
+
+    "hyprland/workspaces#taskbar": {
+        "all-outputs": true,
+        "format": "{windows}",
+        "active-only": true,
+        "workspace-taskbar": {
+            "enable": true,
+            "format": "{icon}",
+            "icon-size": 16
         }
     },
 

@@ -123,6 +123,7 @@
 
     "backlight": {
         "format": "<b>{icon} {percent}</b>",
+        "tooltip": false,
         "format-icons": [
             "󱩎",
             "󱩏",

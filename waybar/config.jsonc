@@ -142,7 +142,7 @@
     "network": {
         "interval": 2,
         "format": "<b>{ifname}</b>",
-        "format-alt": "<b>{ipaddr}</b>",
+        "format-alt": "<b>󰩠 {ipaddr}</b>",
         "format-ethernet": "<b>󰛳</b>",
         "format-wifi": "<b>{icon}</b>",
         "format-disconnetcted": "󰲛",

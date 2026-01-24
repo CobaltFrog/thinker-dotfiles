@@ -35,27 +35,31 @@ window {
 
 #input {
     margin: 10px;
-    border: 4px;
+    border: none;
     border-radius: 0;
-    border-color: @foreground-normal;
-    color: @background-light;
+    color: @accent-normal;
     background-color: transparent;
 }
 
 #entry {
-    margin: 5px 4px;
-    border: none;
+    margin: 0px 4px;
+    border: 4px solid;
+    border-color: transparent;
     color: @foreground-normal;
     background-color: transparent;   
 }
 
+#entry arrow {
+    color: @foreground-normal;
+}
+
 #entry:selected {
-    margin: 1px 0px;
+    margin: 0px 4px;
     border: 4px solid;
-    border-color: @foreground-normal;
-    background-color: transparent;
+    border-color: transparent;
+    background-color: @accent-normal;
 }
 #entry:selected #text {
-    color: @accent-light;
+    color: @text-light;
     font-weight: bold;
 }

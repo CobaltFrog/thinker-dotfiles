@@ -135,7 +135,7 @@
 
     "disk": {
         "format": "<b>󰉉 {percentage_used}%</b>",
-        "tooltip-format": "{used}/{total}",
+        "tooltip-format": "󱙃 {used}/{total}\n󰉉 {free}",
         "unit": "GiB"
     },
 
@@ -153,6 +153,18 @@
             "󱩕",
             "󱩖",
             "󰛨"
+        ]
+    },
+
+    "temperature": {
+        "format": "{icon} {temperatureC}",
+        "tooltip": false,
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
         ]
     },
 
@@ -288,6 +300,7 @@
             "cpu",
             "memory",
             "disk",
+            "temperature",
             "battery",
             "backlight",
             "custom/separator-right"

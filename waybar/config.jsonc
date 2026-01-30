@@ -52,6 +52,7 @@
         "tooltip": false
     },
 
+    // Power
     "custom/poweroff": {
         "format": "<b>󰐥</b>",
         "on-click": "systemctl poweroff",
@@ -67,6 +68,12 @@
     "custom/logout": {
         "format": "<b>󰍃</b>",
         "on-click": "~/.config/hypr/scripts/logout.sh",
+        "tooltip": false
+    },
+
+    "custom/lock": {
+        "format": "<b>󰌾</b>",
+        "on-click": "~/.config/hypr/scripts/lock.sh",
         "tooltip": false
     },
 
@@ -266,7 +273,8 @@
         "modules": [
             "custom/poweroff",
             "custom/reboot",
-            "custom/logout"
+            "custom/logout",
+            "custom/lock"
         ]
     },
 

@@ -164,7 +164,7 @@
     },
 
     "temperature": {
-        "format": "{icon} {temperatureC}",
+        "format": "<b>{icon} {temperatureC}</b>",
         "tooltip": false,
         "format-icons": [
             "",

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-install_dir="./.test"
-backup_dir="./.config.back"
+install_dir="~/.config"
+backup_dir="~/.config/.config.back"
 
 function copy_blacklist() {
     SOURCE_DIR="$1"

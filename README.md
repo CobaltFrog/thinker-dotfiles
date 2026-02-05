@@ -19,6 +19,7 @@ $ cd thinker-dotfiles
 # to be sure what you can run the script,
 # make the file executable
 $ chmod +x ./install.sh
+$ ./install.sh
 ```
 
 This script will move your previous configuration to `~/.config/.config.back` and also will create symlinks to directories located in the cloned repository. 

@@ -6,7 +6,7 @@ Thinker is a simple hypr+waybar config
 
 You have 2 variants: 
  - Use install script
- - Manual шnstallation
+ - Manual installation
 
 In any case, you need to copy the repository first
 

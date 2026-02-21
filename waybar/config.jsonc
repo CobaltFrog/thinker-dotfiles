@@ -11,7 +11,8 @@
 
     "modules-left": [
         "group/tools",
-        "group/player"
+        // "group/player"
+        "mpris"
     ],
 
     "modules-center": [
@@ -37,42 +38,42 @@
     },
 
     "custom/separator-center": {
-        "format": "<b>|</b>",
+        "format": "|",
         "tooltip": false
     },
 
     "custom/separator-left":{
-        "format": "<b>[</b>",
+        "format": "[",
         "tooltip": false,
         "on-scroll-up": ""
     },
 
     "custom/separator-right": {
-        "format": "<b>]</b>",
+        "format": "]",
         "tooltip": false
     },
 
     // Power
     "custom/poweroff": {
-        "format": "<b>󰐥</b>",
+        "format": "󰐥",
         "on-click": "systemctl poweroff",
         "tooltip": false
     },
 
     "custom/reboot": {
-        "format": "<b></b>",
+        "format": "",
         "on-click": "systemctl reboot",
         "tooltip": false
     },
 
     "custom/logout": {
-        "format": "<b>󰍃</b>",
+        "format": "󰍃",
         "on-click": "~/.config/hypr/scripts/logout.sh",
         "tooltip": false
     },
 
     "custom/lock": {
-        "format": "<b>󰌾</b>",
+        "format": "󰌾",
         "on-click": "~/.config/hypr/scripts/lock.sh",
         "tooltip": false
     },
@@ -86,7 +87,7 @@
         "on-click": "playerctl next",
         "on-click-right": "playerctl previous",
         "on-click-middle": "playerctl play-pause",
-        "format": "<b>{status_icon} | {title} - {artist} | {player_icon}</b>",
+        "format": "[  {status_icon} | {title} - {artist} | {player_icon}  ]",
         "title-len": 20,
         "artist-len": 15,
         "tooltip-format": "󰠃 {artist}\n󰝚 {title}\n󰎆 {album}\n{player_icon} {player}",
@@ -103,9 +104,22 @@
         "on-scroll-down": "playerctl position 5-"
     },
 
+    "wlr/taskbar": {
+        "all-outputs": true,
+        "format": "{icon} {name}",
+        "tooltip-format": "{title}\n{name}\n{app_id}",
+        "on-click": "activate",
+        "on-click-middle": "minimize",
+        "on-click-right": "close",
+        "icon-size": 20,
+        "ignore-list": [
+            "Alacritty"
+        ]
+    },
+
 // hardware
     "battery": {
-        "format": "<b>{icon} {capacity}%</b>",
+        "format": "{icon} {capacity}%",
         "tooltip-format": "󱐋 {power}W\n󰥔 {time}\n󱞯 {cycles}",
         "format-icons": [
             "󰩇",
@@ -127,27 +141,27 @@
     },
 
     "cpu": {
-        "format": "<b>CPU: {usage}%</b>",
-        "format-alt": "<b>CPU: {icon}</b>",
+        "format": "CPU: {usage}%",
+        "format-alt": "CPU: {icon}",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
         "tooltip": false
     },
 
     "memory": {
-        "format": "<b>RAM: {percentage}%</b>",
-        "format-alt": "<b>RAM: {icon}</b>",
+        "format": "RAM: {percentage}%",
+        "format-alt": "RAM: {icon}",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
         "tooltip": false
     },
 
     "disk": {
-        "format": "<b>󰉉 {percentage_used}%</b>",
+        "format": "󰉉 {percentage_used}%",
         "tooltip-format": "󱙃 {used}/{total}\n󰉉 {free}",
         "unit": "GiB"
     },
 
     "backlight": {
-        "format": "<b>{icon} {percent}</b>",
+        "format": "{icon} {percent}",
         "tooltip": false,
         "format-icons": [
             "󱩎",
@@ -164,14 +178,17 @@
     },
 
     "temperature": {
-        "format": "<b>{icon} {temperatureC}</b>",
+        "thermal-zone": 1,
+        "format": "{icon} {temperatureC}",
+        "interval": 5,
+        "warning-threshold": 80,
+        "critical-threshold": 90,
         "tooltip": false,
         "format-icons": [
             "",
             "",
             "",
-            "",
-            "",
+            ""
         ]
     },
 
@@ -179,10 +196,10 @@
 // software
     "network": {
         "interval": 2,
-        "format": "<b>{ifname}</b>",
-        "format-alt": "<b>󰩠 {ipaddr}</b>",
-        "format-ethernet": "<b>󰛳</b>",
-        "format-wifi": "<b>{icon}</b>",
+        "format": "{ifname}",
+        "format-alt": "󰩠 {ipaddr}",
+        "format-ethernet": "󰛳",
+        "format-wifi": "{icon}",
         "format-disconnetcted": "󰲛",
         "format-disabled": "󰱟",
         "format-icons": [
@@ -212,7 +229,7 @@
     },
 
     "wireplumpber": {
-        "format": "<b>{icon} {volume}%</b>",
+        "format": "{icon} {volume}%",
         "format-muted": "󰸈",
         "tooltip": false,
         "format-icons": [
@@ -223,7 +240,7 @@
     },
 
     "pulseaudio": {
-        "format": "<b>{icon} {volume}%</b>",
+        "format": "{icon} {volume}%",
         "format-muted": "󰸈",
         "tooltip": false,
         "format-icons": [
@@ -234,16 +251,16 @@
     },
 
     "clock": {
-        "format": "<b>{:%H:%M}</b>",
-        "format-alt": "<b>{:%d.%m.%Y}</b>",
+        "format": "{:%H:%M}",
+        "format-alt": "{:%d.%m.%Y}",
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "mode": "month",
             "mode-mon-col": 3,
             "format": {
-                "days":       "<span color='#faf7f2'><b>{}</b></span>",
-                "weekdays":   "<span color='#36d67b'><b>{}</b></span>",
-                "today":      "<span color='#4a9191'><b><u>{}</u></b></span>"
+                "days":       "<span color='#faf7f2'>{}</span>",
+                "weekdays":   "<span color='#36d67b'>{}</span>",
+                "today":      "<span color='#4a9191'><u>{}</u></span>"
             }
         }
     },
@@ -280,14 +297,9 @@
 
     "group/information": {
         "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 250,
-            "children-class": "information-drawer"
-        },
         "modules": [
-            "group/active-window",
             "custom/separator-left",
-            "hyprland/workspaces#taskbar",
+            "wlr/taskbar",
             "custom/separator-right"
         ]
     },
@@ -336,16 +348,6 @@
         ]
     },
 
-    "group/player": {
-        "orientation": "horizontal",
-        "modules": [
-            "custom/separator-left",
-            "mpris",
-            "custom/separator-right"
-        ]
-    },
-
-
 // _   ___   ______  ____  _        _    _   _ ____  
 //| | | \ \ / /  _ \|  _ \| |      / \  | \ | |  _ \ 
 //| |_| |\ V /| |_) | |_) | |     / _ \ |  \| | | | |
@@ -356,7 +358,7 @@
         "all-outputs": true,
         "active-only": false,
         "on-click": "activate",
-        "format": "<b>{icon}{name}</b>",
+        "format": "{icon}{name}",
         "format-icons": {
             "active": "@",
             "empty": "!",
@@ -367,29 +369,14 @@
         }
     },
 
-    "hyprland/workspaces#taskbar": {
-        "all-outputs": true,
-        "format": "{windows}",
-        "active-only": true,
-        "workspace-taskbar": {
-            "enable": true,
-            "format": "{icon}",
-            "icon-size": 16
-        }
-    },
-
     "hyprland/window": {
-        "format": "<b>{title}</b>",
-        "tooltip": false,
-        "max-length": 25,
+        "format": "{title}",
+        "max-length": 15,
         "icon": false
-        //"rewrite": {
-        //    
-        //} 
     },
 
     "hyprland/language": {
-        "format": "<b>{}</b>",
+        "format": "{}",
         "format-en": "EN",
         "format-ru": "RU"
     }

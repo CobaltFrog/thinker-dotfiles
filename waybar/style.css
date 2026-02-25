@@ -83,6 +83,7 @@ tooltip label {
 #network,
 #battery,
 #memory,
+#tray,
 #disk,
 #cpu {
    margin: 0 5px; 
@@ -131,6 +132,27 @@ tooltip label {
 #battery.normal,
 #mpris.paused {
     color: @foreground-dark;
+}
+
+/* Tray */
+#tray menu {
+    color: @foreground-normal;
+    background-color: @background-normal;
+    border-radius: 0;
+    border: 4px solid @foreground-normal;
+}
+
+#tray menuitem:hover {
+    color: @background-normal;
+    background-color: @foreground-normal;
+}
+
+#tray.passive {
+    color: @foreground-dark;
+}
+
+#tray.needs-attentions {
+    color: @accent-normal;
 }
 
 /* Groups */

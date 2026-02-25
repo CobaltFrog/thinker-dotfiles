@@ -12,7 +12,7 @@
     "modules-left": [
         "group/tools",
         "group/traygroup",
-        "mpris",
+        "mpris"
     ],
 
     "modules-center": [
@@ -87,8 +87,13 @@
         "on-click": "playerctl next",
         "on-click-right": "playerctl previous",
         "on-click-middle": "playerctl play-pause",
-        "format": "[  {status_icon} | {title} - {artist} | {player_icon}  ]",
-        "title-len": 20,
+        "format": "[  {status_icon} | {dynamic} | {player_icon}  ]",
+        "dynamic-order": [
+            "title",
+            "artist"
+        ],
+        "dynamic-len": 15,
+        "title-len": 15,
         "artist-len": 15,
         "tooltip-format": "󰠃 {artist}\n󰝚 {title}\n󰎆 {album}\n{player_icon} {player}",
         "status-icons": {

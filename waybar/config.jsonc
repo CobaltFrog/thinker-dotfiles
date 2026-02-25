@@ -378,7 +378,7 @@
         "active-only": false,
         "on-click": "activate",
         "format": "{icon}{name}> {windows}",
-        "format-window-separator": " | ",
+        "format-window-separator": " ",
         "format-icons": {
             "active": "@",
             "empty": "!",
@@ -394,7 +394,9 @@
             
             // title rules
             "title<.*nvim.*": "",
-            "title<.*vim.*": ""
+            "title<.*vim.*": "",
+            "title<.*cava.*": "󰝚",
+            "title<.*git.*>": "󰊢"
         }
     },
 

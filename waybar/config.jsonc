@@ -372,14 +372,24 @@
         "all-outputs": true,
         "active-only": false,
         "on-click": "activate",
-        "format": "{icon}{name}",
+        "format": "{icon}{name}> {windows}",
+        "format-window-separator": " | ",
         "format-icons": {
             "active": "@",
             "empty": "!",
             "default": "#"
         },
-        "peristent-workspaces": {
-            "*": 2
+        "window-rewrite-default": "󰣆",
+        "window-rewrite": {
+            // class rules
+            "class<firefox>": "󰈹",
+            "class<discord>": "",
+            "class<Alacritty>": "󰆍",
+            "class<.*telegram.*>": "",
+            
+            // title rules
+            "title<.*nvim.*": "",
+            "title<.*vim.*": ""
         }
     },
 

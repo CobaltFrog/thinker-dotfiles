@@ -11,8 +11,8 @@
 
     "modules-left": [
         "group/tools",
-        // "group/player"
-        "mpris"
+        "group/traygroup",
+        "mpris",
     ],
 
     "modules-center": [
@@ -106,8 +106,8 @@
 
     "wlr/taskbar": {
         "all-outputs": true,
-        "format": "{icon} {name}",
-        "tooltip-format": "{title}\n{name}\n{app_id}",
+        "format": "{icon}",
+        "tooltip-format": "󰋼 {title}\n󱈤 {name}\n󰿀 {app_id}",
         "on-click": "activate",
         "on-click-middle": "minimize",
         "on-click-right": "close",
@@ -117,9 +117,14 @@
         ]
     },
 
+    "tray": {
+        "icon-size": 16,
+        "spacing": 4
+    },
 // hardware
     "battery": {
         "format": "{icon} {capacity}%",
+        "format-charging": "󱐋 {capacity}%",
         "tooltip-format": "󱐋 {power}W\n󰥔 {time}\n󱞯 {cycles}",
         "format-icons": [
             "󰩇",
@@ -344,6 +349,15 @@
         "modules": [
             "custom/separator-left",
             "clock",
+            "custom/separator-right"
+        ]
+    },
+
+    "group/traygroup": {
+        "orientation": "inherit",
+        "modules": [
+            "custom/separator-left",
+            "tray",
             "custom/separator-right"
         ]
     },

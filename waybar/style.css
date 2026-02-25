@@ -58,6 +58,7 @@ tooltip label {
 .modules-center,
 .modules-left {
     margin: 5px 5px;
+    margin: 4px 4px;
     background-color: @background-normal;
     border: 4px solid @foreground-normal;
 }
@@ -71,6 +72,7 @@ tooltip label {
 }
 
 /*General modules style*/
+#temperature,
 #wireplumber,
 #temperature,
 #workspaces,
@@ -115,7 +117,7 @@ tooltip label {
 
 #temperature.warning,
 #battery.warning {
-    color: @warning-color;
+    color: @foreground-light;
 }
 
 #temperature.critical,

@@ -71,6 +71,7 @@ tooltip label {
 }
 
 /*General modules style*/
+#power-profiles-daemon,
 #temperature,
 #wireplumber,
 #temperature,
@@ -81,6 +82,7 @@ tooltip label {
 #taskbar,
 #network,
 #battery,
+#submap,
 #memory,
 #tray,
 #disk,
@@ -154,6 +156,7 @@ tooltip label {
 }
 
 /* Groups */
+
 #information,
 #hardware,
 #player,

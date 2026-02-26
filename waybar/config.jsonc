@@ -231,7 +231,7 @@
         "format-disabled": "",
         "format-off": "",
         "format-connected": "󰂱",
-        "format-connected-battery": "󰂱 {device_battery_percentage}",
+        "format-connected-battery": "󰂱 {device_battery_percentage}%",
         "tooltip-format": "{controller_alias}\n{controller_address}",
         "tooltip-format-connected": "{controller_alias}\n{controller_address}\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\n{status}\n{device_address}",
@@ -387,12 +387,14 @@
         "window-rewrite-default": "󰣆",
         "window-rewrite": {
             // class rules
+            "class<.*dolphin>": "󰉋",
             "class<firefox>": "󰈹",
             "class<discord>": "",
             "class<Alacritty>": "󰆍",
             "class<.*telegram.*>": "",
             
             // title rules
+            "title<superfile>": "󰉋",
             "title<.*nvim.*": "",
             "title<.*vim.*": "",
             "title<.*cava.*": "󰝚",

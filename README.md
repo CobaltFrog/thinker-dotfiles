@@ -3,7 +3,7 @@
 Thinker is a simple hypr+waybar config
 
 **Included projects**  
-[Lockscreen equalizer] (https://github.com/Fubi118/hyprlock-equalizer.git)
+[Lockscreen equalizer](https://github.com/Fubi118/hyprlock-equalizer.git)
 
 **Dependencies**  
  - Required

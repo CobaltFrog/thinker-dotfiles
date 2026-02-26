@@ -1,2 +1,2 @@
 #/bin/sh
-hyprlock
+pidof hyprlock || hyprlock

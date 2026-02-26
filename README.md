@@ -2,6 +2,30 @@
 
 Thinker is a simple hypr+waybar config
 
+**Included projects**  
+[Lockscreen equalizer](https://github.com/Fubi118/hyprlock-equalizer.git)
+
+**Dependencies**  
+ - Required
+```bash
+cava
+playerctl
+
+dunst
+waybar
+
+hyprland
+hyprlock
+hypridle
+hyprpaper
+```
+- Optional
+```bash
+alacritty
+btop
+wofi
+```
+
 **Installation** 
 
 You have 2 variants: 

@@ -402,7 +402,7 @@
     },
 
     "hyprland/submap": {
-        "format": "{}"
+        "format": "-- {} --"
     },
 
     "hyprland/window": {

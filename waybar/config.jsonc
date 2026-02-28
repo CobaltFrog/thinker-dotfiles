@@ -390,7 +390,7 @@
             "class<firefox>": "󰈹",
             "class<discord>": "",
             "class<Alacritty>": "󰆍",
-            "class<.*telegram.*>": "",
+            "class<.*telegram.*>": "",
             
             // title rules
             "title<superfile>": "󰉋",

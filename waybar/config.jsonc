@@ -389,6 +389,7 @@
             "class<.*dolphin>": "󰉋",
             "class<firefox>": "󰈹",
             "class<discord>": "",
+            "class<steam>": "󰓓",
             "class<Alacritty>": "󰆍",
             "class<.*telegram.*>": "",
             

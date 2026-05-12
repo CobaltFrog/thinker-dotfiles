@@ -10,17 +10,18 @@ Thinker is a simple hypr+waybar config
 ```bash
 cava
 playerctl
-
 dunst
 waybar
-
+wl-clipboard
+cliphist
+awww
 hyprland
 hyprlock
 hypridle
-hyprpaper
 ```
 - Optional
 ```bash
+uwsm
 alacritty
 btop
 wofi
@@ -47,6 +48,8 @@ $ ./install.sh
 ```
 
 This script will move your previous configuration to `~/.config/.config.back` and also will create symlinks to directories located in the cloned repository. 
+
+Also, if you using [uwsm](https://github.com/Vladimir-csp/uwsm) you can add value to ```$cmd_start_app``` variable.
 
 - Manual installation 
 ```bash

@@ -165,7 +165,7 @@ get_file_by_idx() {
 
 set_wallpaper() {
     local file="$1"
-    swww img "$file" --transition-type random --transition-fps 75 --transition-step 255 --transition-duration 1
+    swww img "$file" --transition-type fade --transition-fps 60 --transition-step 255 --transition-duration 0.5 --fill-color 2c2a24ff
     echo "Wallpaper set to: $file"
 }
 
@@ -271,7 +271,6 @@ if [ $# -eq 0 ]; then
     e_help
     exit 1
 fi
-
 case "$1" in
     -help)
         e_help_big

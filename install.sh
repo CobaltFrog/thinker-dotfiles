@@ -2,14 +2,14 @@
 
 install_dir="~/.config"
 backup_dir="~/.config/.config.back"
+BLACKLIST=(
+    ".git"
+    ".test"
+)
 
 function copy_blacklist() {
     SOURCE_DIR="$1"
     TARGET_DIR="$2"
-    BLACKLIST=(
-        ".git"
-        ".test"
-    )
 
     cd "$SOURCE_DIR" || return 1
 
@@ -72,6 +72,9 @@ while [ 1 ]; do
         break
     elif [[ $REPLY = "y" ]]; then
         echo "Starting installation to $install_dir"
+        if [[ command -v uwsm >/dev/null 2>&1 ]]; then
+            BLACKLIST+=("uwsm")
+        fi
         copy_blacklist $(pwd) $install_dir
         break
     else

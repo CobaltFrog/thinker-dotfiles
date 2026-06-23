@@ -15,7 +15,7 @@ hl.monitor({
 
 hl.monitor({
     output = "HDMI-A-1",
-    mode = "1080x1920@180",
+    mode = "1920x1080@180",
     position = "-1080x-300",
     scale = 1,
     transform = 1
@@ -47,7 +47,7 @@ hl.monitor({
 -- local exec = require("exec")
 -- TODO: convert . /source/exec.conf to .lua and use require()
 
-require("source.appearance")
+require("config.appearance")
 
 hl.config({
     misc = {
@@ -63,12 +63,12 @@ hl.config({
 })
 
 -- input and devices
-require("source.input")
-require("source.devices")
+require("config.input")
+require("config.devices")
 
 -- binds
-require("source.binds")
+require("config.binds")
 
 -- window and workspace rules
-require("source.window.rule")
-require("source.workspace.rule")
+require("config.windowrule")
+require("config.workspacerule")

@@ -7,7 +7,7 @@ hl.config({
         gaps_in = 4,
         gaps_out = 4,
 
-        layout = get_layout(Thinker.current_layout_index),
+        layout = Get_layout(Thinker.current_layout_index),
 
         ["col.inactive_border"] = Thinker.Colors.background_normal,
         ["col.active_border"] = Thinker.Colors.foreground_normal,
@@ -19,10 +19,6 @@ hl.config({
             window_gap = 8,
             monitor_gap = 8
         },
-
-        animations = {
-            enabled = true
-        }
     }
 })
 
@@ -33,7 +29,7 @@ hl.config({
         new_status = "slave",
         orientation = "center",
         slave_count_for_center_master = 2,
-        center_master_fallback = "left",
+        center_master_fallback = "right",
     },
 })
 
@@ -59,3 +55,13 @@ hl.config({
         },
     },
 })
+
+hl.curve("popup", { type = "spring", mass = 1, stiffness = 35, dampening = 6 })
+hl.curve("line", { type = "bezier", points = { {0, 0}, {1, 1}}})
+hl.curve("inout", { type = "bezier", points = { {0.19, 1}, {0.22, 1.05}}})
+
+hl.animation({ leaf = "windows",     enabled = true, speed = 4, spring = "popup", style = "popin" })
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 4, bezier = "inout", style = "gnomed" })
+hl.animation({ leaf = "workspaces",  enabled = true, speed = 4, bezier = "inout", style = "fade" })
+
+hl.animation({ leaf = "border", enabled = true, speed = 2, bezier = "line" })

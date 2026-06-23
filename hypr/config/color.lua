@@ -1,3 +1,5 @@
+require("config.config")
+
 Thinker.Colors = {}
 
 Thinker.Colors.transparent = "#00000000"

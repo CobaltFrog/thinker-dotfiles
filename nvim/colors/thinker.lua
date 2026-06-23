@@ -91,6 +91,7 @@ set_hl("Normal", text_normal, background_normal,  { ctermfg = 15, ctermbg = 236 
 -- cursor
 set("Cursor", { reverse = true, bold = true })
 set("lCursor", { reverse = true, bold = true })
+set_hl("Search", background_normal, foreground_normal)
 
 -- main look
 set_hl("StatusLine", text_normal, background_dark)
@@ -98,6 +99,9 @@ set_bg("CursorLine", background_light)
 set_bg("CursorColumn", background_light)
 set_bg("ColorColumn", foreground_light)
 set_fg("ModeMsg", second_foreground_normal)
+set_ln("IncSearch", "Search")
+set_ln("Substitute", "Search")
+set_ln("CurSearch", "Search")
 
 -- line numbers
 set_hl("CursorLineNr", accent_light, background_light, { bold = true })

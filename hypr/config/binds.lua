@@ -1,5 +1,7 @@
 ---@module 'hl'
 
+require("config.config")
+
 local mod = "SUPER"
 -- __        _____ _   _ ____   _____        ______  
 -- \ \      / /_ _| \ | |  _ \ / _ \ \      / / ___| 
@@ -27,38 +29,12 @@ hl.bind(mod .. "+" .. "J", hl.dsp.focus({ direction = "down" }))
 --   \ V  V /| |_| |  _ <| . \ ___) |  __/ ___ \ |___| |___ 
 --    \_/\_/  \___/|_| \_\_|\_\____/|_| /_/   \_\____|_____|
 --
-hl.bind(mod .. "+" .. 1, hl.dsp.focus({ workspace = 1 }))
-hl.bind(mod .. "+" .. 2, hl.dsp.focus({ workspace = 2 }))
-hl.bind(mod .. "+" .. 3, hl.dsp.focus({ workspace = 3 }))
-hl.bind(mod .. "+" .. 4, hl.dsp.focus({ workspace = 4 }))
-hl.bind(mod .. "+" .. 5, hl.dsp.focus({ workspace = 5 }))
-hl.bind(mod .. "+" .. 6, hl.dsp.focus({ workspace = 6 }))
-hl.bind(mod .. "+" .. 7, hl.dsp.focus({ workspace = 7 }))
-hl.bind(mod .. "+" .. 8, hl.dsp.focus({ workspace = 8 }))
-hl.bind(mod .. "+" .. 9, hl.dsp.focus({ workspace = 9 }))
-hl.bind(mod .. "+" .. 0, hl.dsp.focus({ workspace = 10 }))
-
-hl.bind(mod .. "+" .. "SHIFT" .. "+" .. 1, hl.dsp.window.move({ workspace = 1 }))
-hl.bind(mod .. "+" .. "SHIFT" .. "+" .. 2, hl.dsp.window.move({ workspace = 2 }))
-hl.bind(mod .. "+" .. "SHIFT" .. "+" .. 3, hl.dsp.window.move({ workspace = 3 }))
-hl.bind(mod .. "+" .. "SHIFT" .. "+" .. 4, hl.dsp.window.move({ workspace = 4 }))
-hl.bind(mod .. "+" .. "SHIFT" .. "+" .. 5, hl.dsp.window.move({ workspace = 5 }))
-hl.bind(mod .. "+" .. "SHIFT" .. "+" .. 6, hl.dsp.window.move({ workspace = 6 }))
-hl.bind(mod .. "+" .. "SHIFT" .. "+" .. 7, hl.dsp.window.move({ workspace = 7 }))
-hl.bind(mod .. "+" .. "SHIFT" .. "+" .. 8, hl.dsp.window.move({ workspace = 8 }))
-hl.bind(mod .. "+" .. "SHIFT" .. "+" .. 9, hl.dsp.window.move({ workspace = 9 }))
-hl.bind(mod .. "+" .. "SHIFT" .. "+" .. 0, hl.dsp.window.move({ workspace = 10}))
-
-hl.bind(mod .. "+" .. "CONTROL" .. "+" .. 1, hl.dsp.window.move({ workspace = 1, follow = false }))
-hl.bind(mod .. "+" .. "CONTROL" .. "+" .. 2, hl.dsp.window.move({ workspace = 2, follow = false }))
-hl.bind(mod .. "+" .. "CONTROL" .. "+" .. 3, hl.dsp.window.move({ workspace = 3, follow = false }))
-hl.bind(mod .. "+" .. "CONTROL" .. "+" .. 4, hl.dsp.window.move({ workspace = 4, follow = false }))
-hl.bind(mod .. "+" .. "CONTROL" .. "+" .. 5, hl.dsp.window.move({ workspace = 5, follow = false }))
-hl.bind(mod .. "+" .. "CONTROL" .. "+" .. 6, hl.dsp.window.move({ workspace = 6, follow = false }))
-hl.bind(mod .. "+" .. "CONTROL" .. "+" .. 7, hl.dsp.window.move({ workspace = 7, follow = false }))
-hl.bind(mod .. "+" .. "CONTROL" .. "+" .. 8, hl.dsp.window.move({ workspace = 8, follow = false }))
-hl.bind(mod .. "+" .. "CONTROL" .. "+" .. 9, hl.dsp.window.move({ workspace = 9, follow = false }))
-hl.bind(mod .. "+" .. "CONTROL" .. "+" .. 0, hl.dsp.window.move({ workspace = 10, follow = false }))
+for i = 1, 10 do
+    local keynum = i % 10
+    hl.bind(mod .. "+" .. keynum, hl.dsp.focus({ workspace = i }))
+    hl.bind(mod .. "+" .. "SHIFT" .. "+" .. keynum, hl.dsp.window.move({ workspace = i }))
+    hl.bind(mod .. "+" .. "CONTROL" .. "+" .. keynum, hl.dsp.window.move({ workspace = i, follow = false }))
+end
 
 -- special workspaces
 hl.bind(mod .. "+" .. "O", hl.dsp.workspace.toggle_special("scratchpad"))
@@ -85,11 +61,11 @@ hl.bind(mod .. "+" .. "mouse_up", hl.dsp.focus({ direction = "down" }))
 --  \___/  |_| |___|_____|___| |_| |___|_____|____/ 
 
 hl.bind(mod .. "+" .. "SHIFT" .. "+" .. "L", hl.dsp.exec_cmd("~/.config/hypr/scripts/lock.sh"))
-hl.bind(mod .. "+" .. "RETURN", hl.dsp.exec_cmd("alacritty"))
+hl.bind(mod .. "+" .. "RETURN", hl.dsp.exec_cmd(Thinker.apps.terminal))
 
 --terminal accesable in all bind maps
-hl.bind(mod .. "+" .. "SHIFT" .. "+" .. "RETURN", hl.dsp.exec_cmd("alacritty"))
-hl.bind(mod .. "+" .. "R", hl.dsp.exec_cmd("wofi --show run"))
+hl.bind(mod .. "+" .. "SHIFT" .. "+" .. "RETURN", hl.dsp.exec_cmd(Thinker.apps.terminal))
+hl.bind(mod .. "+" .. "R", hl.dsp.exec_raw("wofi --show run"))
 hl.bind(mod .. "+" .. "SHIFT" .. "+" .. "R", hl.dsp.exec_cmd("wofi --show run"))
 hl.bind(mod .. "+" .. "V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu| cliphist decode| wl-copy"))
 hl.bind(mod .. "+" .. "CONTROL" .. "+" .. "V", hl.dsp.exec_cmd("cliphist wipe & notify-send Wiped clipboard list:  $(cliphist list)"))
@@ -102,51 +78,113 @@ hl.bind("SHIFT" .. "+" .. "Print", hl.dsp.exec_cmd("grim -g $(slurp -w 0)-| swap
 --  ___) | |_| | |_) | |  | |/ ___ \|  __/ ___) |
 -- |____/ \___/|____/|_|  |_/_/   \_\_|   |____/ 
 
--- -- Applications map
--- hl.bind(mod .. "+" .. "A", hl.dsp.submap("APPS"))
+-- Applications map
+hl.bind(mod .. "+" .. "A", hl.dsp.submap("APPS"))
+hl.define_submap("APPS", function()
+    hl.bind("B", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.browser))
+    hl.bind("F", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.filer))
+    hl.bind("T", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.terminal .. " -e btop"))
+    hl.bind("C", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " hyprpicker -anzq --format=hex"))
+    hl.bind("M", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.messenger))
+    hl.bind("R", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " remmina"))
+    hl.bind("V", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " pavucontrol"))
+    hl.bind("S", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " steam"))
+    hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
+end)
+
+-- Window size
+hl.bind(mod .. "+" .. "S", hl.dsp.submap("RESIZE"))
+hl.define_submap("RESIZE", function()
+    hl.bind("H", hl.dsp.window.resize({ x = -15, y =   0, relative = true}), { repeating = true })
+    hl.bind("J", hl.dsp.window.resize({ x =   0, y =  15, relative = true}), { repeating = true })
+    hl.bind("K", hl.dsp.window.resize({ x =   0, y = -15, relative = true}), { repeating = true })
+    hl.bind("L", hl.dsp.window.resize({ x =  15, y =   0, relative = true}), { repeating = true })
+    hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
+end)
+
+-- Move window
+hl.bind(mod .. "+" .. "M", hl.dsp.submap("MOVE"))
+hl.define_submap("MOVE", function()
+    hl.bind("H", hl.dsp.window.move({ x = -20, y  =   0, relative = true }), { repeating = true })
+    hl.bind("J", hl.dsp.window.move({ x =   0, y  =  20, relative = true }), { repeating = true })
+    hl.bind("K", hl.dsp.window.move({ x =   0, y  = -20, relative = true }), { repeating = true })
+    hl.bind("L", hl.dsp.window.move({ x = 20, y  =   0, relative = true }), { repeating = true })
+    hl.bind("SHIFT+H", hl.dsp.window.swap({ direction = "l"}))
+    hl.bind("SHIFT+J", hl.dsp.window.swap({ direction = "d"}))
+    hl.bind("SHIFT+K", hl.dsp.window.swap({ direction = "u"}))
+    hl.bind("SHIFT+L", hl.dsp.window.swap({ direction = "r"}))
+    hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
+end)
+
+-- Workspaces manipulation
+hl.bind(mod .. "+" .. "W", hl.dsp.submap("WORKSPACE"))
+hl.define_submap("WORKSPACE", function()
+    hl.bind("R", function()
+        Rotate_layout(1)
+    end)
+    hl.bind("D", function ()
+        Set_layout(1)
+    end)
+    hl.bind("M", function ()
+        Set_layout(2)
+    end)
+    hl.bind("S", function ()
+        Set_layout(3)
+    end)
+    hl.bind("O", function ()
+        Set_layout(4)
+    end)
+    hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
+end)
+
+-- Cursor manipulation
+hl.bind(mod .. "+" .. "C", hl.dsp.submap("CURSOR"))
+hl.define_submap("CURSOR", function()
+    hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
+end)
+
+-- Player control
+hl.bind(mod .. "+" .. "P", hl.dsp.submap("PLAYER"), { locked = true })
+hl.define_submap("PLAYER", function()
+    hl.bind("SPACE", hl.dsp.exec_cmd("playerctl play-pause"))
+
+    hl.bind("H", hl.dsp.exec_cmd("playerctl previous"))
+    hl.bind("J", hl.dsp.exec_cmd("playerctl play"))
+    hl.bind("K", hl.dsp.exec_cmd("playerctl pause"))
+    hl.bind("L", hl.dsp.exec_cmd("playerctl next"))
+
+    hl.bind("SHIFT+J", hl.dsp.exec_cmd("playerctl volume 0.01-"),  { repeating = true })
+    hl.bind("SHIFT+K", hl.dsp.exec_cmd("playerctl volume 0.01+"),  { repeating = true })
+    hl.bind("SHIFT+H", hl.dsp.exec_cmd("playerctl position 10-"),  { repeating = true })
+    hl.bind("SHIFT+L", hl.dsp.exec_cmd("playerctl position 10+"),  { repeating = true })
+
+    hl.bind("T", hl.dsp.exec_cmd("playerctl loop Track"))
+    hl.bind("R", hl.dsp.exec_cmd("playerctl loop Playlist"))
+    hl.bind("Y", hl.dsp.exec_cmd("playerctl loop None"))
+    hl.bind("S", hl.dsp.exec_cmd("playerctl shuffle Toggle"))
+
+    -- Информация о треке
+    hl.bind("H", hl.dsp.exec_cmd("playerctl previous"))
+    hl.bind("D", hl.dsp.exec_raw([[
+    sh -c 'notify-send -u normal "󰝚 $(playerctl metadata xesam:title)" "󰠃 $(playerctl metadata xesam:artist)\n󰎆 $(playerctl metadata xesam:album)"'
+    ]]))
+
+    hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
+end)
 --
--- --activate APPlications submap
--- hl.define_submap("APPS", function()
---     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
--- end)
---
--- -- Window size
--- hl.bind(mod .. "+" .. "S", hl.dsp.submap("RESIZE"))
---
--- --Window Size
--- hl.define_submap("RESIZE", function()
---     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
--- end)
---
--- -- Move window
--- hl.bind(mod .. "+" .. "M", hl.dsp.submap("MOVE"))
--- hl.define_submap("MOVE", function()
---     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
--- end)
---
--- -- Workspaces manipulation
--- hl.bind(mod .. "+" .. "W", hl.dsp.submap("WORKSPACE"))
--- hl.define_submap("WORKSPACE", function()
---     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
--- end)
---
--- -- Cursor manipulation
--- hl.bind(mod .. "+" .. "C", hl.dsp.submap("CURSOR"))
--- hl.define_submap("CURSOR", function()
---     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
--- end)
---
--- -- Player control
--- hl.bind(mod .. "+" .. "P", hl.dsp.submap("PLAYER"), { locked = true })
--- hl.define_submap("PLAYER", function()
---     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
--- end)
---
--- -- wallpaper control
--- hl.bind(mod .. "+" .. "B", hl.dsp.submap("BACKGROUND"))
--- hl.define_submap("BACKGROUND", function()
---     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
--- end)
+-- wallpaper control
+hl.bind(mod .. "+" .. "B", hl.dsp.submap("BACKGROUND"))
+hl.define_submap("BACKGROUND", function()
+    hl.bind("H", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wdirprev " .. Thinker.wallpaper.dir))
+    hl.bind("J", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wnext " .. Thinker.wallpaper.dir))
+    hl.bind("K", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wprev " .. Thinker.wallpaper.dir))
+    hl.bind("L", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wdirnext " .. Thinker.wallpaper.dir))
+
+    hl.bind("R", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wrandom " .. Thinker.wallpaper.dir))
+    hl.bind("G", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wload"))
+
+    hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
+end)
 --  _  _________   ______   ___    _    ____  ____  
 -- | |/ / ____\ \ / / __ ) / _ \  / \  |  _ \|  _ \ 
 -- | ' /|  _|  \ V /|  _ \| | | |/ _ \ | |_) | | | |

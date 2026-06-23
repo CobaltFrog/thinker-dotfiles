@@ -1,7 +1,5 @@
 ---@module 'hl'
 
-require("config.config")
-
 local mod = "SUPER"
 -- __        _____ _   _ ____   _____        ______  
 -- \ \      / /_ _| \ | |  _ \ / _ \ \      / / ___| 
@@ -60,13 +58,14 @@ hl.bind(mod .. "+" .. "mouse_up", hl.dsp.focus({ direction = "down" }))
 -- | |_| | | |  | || |___ | |  | |  | || |___ ___) |
 --  \___/  |_| |___|_____|___| |_| |___|_____|____/ 
 
-hl.bind(mod .. "+" .. "SHIFT" .. "+" .. "L", hl.dsp.exec_cmd("~/.config/hypr/scripts/lock.sh"))
+hl.bind(mod .. "+" .. "SHIFT" .. "+" .. "L", hl.dsp.exec_raw("~/.config/hypr/scripts/lock.sh"))
+hl.bind(mod .. "+" .. "CONTROL" .. "+" .. "Q", hl.dsp.exec_raw("~/.config/hypr/scripts/logout.sh"))
 hl.bind(mod .. "+" .. "RETURN", hl.dsp.exec_cmd(Thinker.apps.terminal))
 
 --terminal accesable in all bind maps
 hl.bind(mod .. "+" .. "SHIFT" .. "+" .. "RETURN", hl.dsp.exec_cmd(Thinker.apps.terminal))
-hl.bind(mod .. "+" .. "R", hl.dsp.exec_raw("wofi --show run"))
-hl.bind(mod .. "+" .. "SHIFT" .. "+" .. "R", hl.dsp.exec_cmd("wofi --show run"))
+hl.bind(mod .. "+" .. "R", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " tofi-drun"))
+hl.bind(mod .. "+" .. "SHIFT" .. "+" .. "R", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " tofi-run"))
 hl.bind(mod .. "+" .. "V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu| cliphist decode| wl-copy"))
 hl.bind(mod .. "+" .. "CONTROL" .. "+" .. "V", hl.dsp.exec_cmd("cliphist wipe & notify-send Wiped clipboard list:  $(cliphist list)"))
 hl.bind("Print", hl.dsp.exec_cmd("grim"))

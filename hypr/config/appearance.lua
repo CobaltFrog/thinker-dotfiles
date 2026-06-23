@@ -31,9 +31,6 @@ hl.config({
         slave_count_for_center_master = 2,
         center_master_fallback = "right",
     },
-})
-
-hl.config({
     scrolling = {
         column_width = 0.95,
         focus_fit_method = 0,
@@ -48,9 +45,9 @@ hl.config({
         fullscreen_opacity = 1,
         blur = {
             enabled = true,
-            size = 5,
-            passes = 3,
-            noise = 0.01,
+            size = 3,
+            passes = 2,
+            noise = 0.03,
             vibrancy = 0.5,
         },
     },

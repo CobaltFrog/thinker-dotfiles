@@ -3,7 +3,7 @@
 hl.config({
     input = {
         kb_layout = "us, ru",
-        kb_options = "grp:alt_shift_toggle",
+        kb_options = "grp:alt_shift_toggle, ctrl:nocaps",
         follow_mouse = true,
         touchpad = {
             tap_to_click = true,

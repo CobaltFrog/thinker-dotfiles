@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CACHE_DIR="$HOME/.cache/thinker-scripts/swww/"
+CACHE_DIR="$HOME/.cache/thinker-scripts/awww/"
 
 e_help() {
     echo "usage: $0 <option> [<dir>]"
@@ -27,7 +27,7 @@ e_help_big() {
     echo "description:"
     echo "  Working directory is the currently selected subdirectory (persisted in cache)."
     echo "  Use -wdirnext / -wdirprev to change it, then -wnext / -wprev to cycle wallpapers inside it."
-    echo "  All wallpaper operations require swww daemon running."
+    echo "  All wallpaper operations require awww daemon running."
     exit 0
 }
 
@@ -108,9 +108,9 @@ set_working_dir() {
     echo "$1" > "$CACHE_DIR/current_working_dir"
 }
 
-check_swww_daemon() {
-    if ! pgrep -x "swww-daemon" >/dev/null; then
-        echo "Error: swww daemon is not running." >&2
+check_awww_daemon() {
+    if ! pgrep -x "awww-daemon" >/dev/null; then
+        echo "Error: awww daemon is not running." >&2
         exit 1
     fi
 }
@@ -165,7 +165,7 @@ get_file_by_idx() {
 
 set_wallpaper() {
     local file="$1"
-    swww img "$file" --transition-type random --transition-fps 75 --transition-step 255 --transition-duration 1
+    awww img "$file" --transition-type random --transition-fps 75 --transition-step 255 --transition-duration 1
     echo "Wallpaper set to: $file"
 }
 
@@ -195,7 +195,7 @@ swap_seq() {
         exit 1
     fi
 
-    check_swww_daemon
+    check_awww_daemon
     set_wallpaper "$selected"
     set_file_idx "$dir" "$new_idx"
 }
@@ -219,7 +219,7 @@ swap_random() {
     local rand_idx=$(( RANDOM % total ))
     local selected=$(get_file_by_idx "$file_list" "$rand_idx")
 
-    check_swww_daemon
+    check_awww_daemon
     set_wallpaper "$selected"
     set_file_idx "$dir" "$rand_idx"
 }
@@ -253,7 +253,7 @@ swap_2_idx() {
         exit 1
     fi
 
-    check_swww_daemon
+    check_awww_daemon
     set_wallpaper "$selected"
 }
 

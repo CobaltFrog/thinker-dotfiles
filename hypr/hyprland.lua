@@ -1,12 +1,9 @@
 ---@module 'hl'
-
--- local settings = require("settings")
--- TODO: convert . /settings.conf to .lua and use require()
-
 require("config.color")
+require("config.config")
 
 hl.monitor({
-    output = "DP-2",
+    output = Thinker.display.m0name,
     mode = "1920x1080@180",
     position = "0x0",
     scale = 1,
@@ -14,7 +11,7 @@ hl.monitor({
 })
 
 hl.monitor({
-    output = "HDMI-A-1",
+    output = Thinker.display.m1name,
     mode = "1920x1080@180",
     position = "-1080x-300",
     scale = 1,
@@ -30,33 +27,20 @@ hl.monitor({
 })
 
 -- env variables
+require("config.environment")
 
--- source = . /source/environment.conf -> requires manual conversion
--- local environment = require("environment")
--- TODO: convert . /source/environment.conf to .lua and use require()
-
--- permissions
-
--- source = . /source/permissions.conf -> requires manual conversion
--- local permissions = require("permissions")
--- TODO: convert . /source/permissions.conf to .lua and use require()
+hl.permission({ binary = "/usr/bin/hyprlock", type = "screencopy", mode = "allow" })
 
 -- start
-
--- source = . /source/exec.conf -> requires manual conversion
--- local exec = require("exec")
--- TODO: convert . /source/exec.conf to .lua and use require()
+require("config.exec")
 
 require("config.appearance")
-
 hl.config({
     misc = {
         force_default_wallpaper = -1,
         disable_hyprland_logo = true,
     },
-})
 
-hl.config({
     ecosystem = {
         enforce_permissions = true,
     },

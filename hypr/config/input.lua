@@ -1,0 +1,14 @@
+---@module 'hl'
+
+hl.config({
+    input = {
+        kb_layout = { "us", "ru" },
+        kb_options = "grp:alt_shift_toggle",
+        follow_mouse = true,
+        touchpad = {
+            natural_scroll = true,
+            disable_while_typing = true,
+            scroll_factor = 0.4,
+        },
+    },
+})

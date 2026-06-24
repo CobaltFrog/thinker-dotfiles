@@ -60,6 +60,7 @@ hl.bind(mod .. "+" .. "mouse_up", hl.dsp.focus({ direction = "down" }))
 
 hl.bind(mod .. "+" .. "SHIFT" .. "+" .. "L", hl.dsp.exec_raw("~/.config/hypr/scripts/lock.sh"))
 hl.bind(mod .. "+" .. "CONTROL" .. "+" .. "Q", hl.dsp.exec_raw("~/.config/hypr/scripts/logout.sh"))
+hl.bind(mod .. "+CONTROL+L", hl.dsp.exit())
 hl.bind(mod .. "+" .. "RETURN", hl.dsp.exec_cmd(Thinker.apps.terminal))
 
 --terminal accesable in all bind maps
@@ -80,14 +81,20 @@ hl.bind("SHIFT" .. "+" .. "Print", hl.dsp.exec_cmd("grim -g $(slurp -w 0)-| swap
 -- Applications map
 hl.bind(mod .. "+" .. "A", hl.dsp.submap("APPS"))
 hl.define_submap("APPS", function()
-    hl.bind("B", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.browser))
-    hl.bind("F", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.filer))
-    hl.bind("T", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.terminal .. " -e btop"))
-    hl.bind("C", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " hyprpicker -anzq --format=hex"))
-    hl.bind("M", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.messenger))
-    hl.bind("R", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " remmina"))
-    hl.bind("V", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " pavucontrol"))
-    hl.bind("S", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " steam"))
+    local function exec_raw_reset(cmd)
+        hl.dispatch(hl.dsp.exec_raw(cmd))
+        hl.dispatch(hl.dsp.submap("reset"))
+    end
+
+    hl.bind("B", function() exec_raw_reset(Thinker.uwsm_cmd .. " " .. Thinker.apps.browser) end)
+    hl.bind("F", function() exec_raw_reset(Thinker.uwsm_cmd .. " " .. Thinker.apps.filer) end)
+    hl.bind("T", function() exec_raw_reset(Thinker.uwsm_cmd .. " " .. Thinker.apps.terminal .. " -e btop") end)
+    hl.bind("C", function() exec_raw_reset(Thinker.uwsm_cmd .. " hyprpicker -anzq --format=hex") end)
+    hl.bind("M", function() exec_raw_reset(Thinker.uwsm_cmd .. " " .. Thinker.apps.messenger) end)
+    hl.bind("R", function() exec_raw_reset(Thinker.uwsm_cmd .. " remmina") end)
+    hl.bind("V", function() exec_raw_reset(Thinker.uwsm_cmd .. " pavucontrol") end)
+    hl.bind("S", function() exec_raw_reset(Thinker.uwsm_cmd .. " steam") end)
+
     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
 end)
 

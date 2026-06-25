@@ -4,23 +4,25 @@ require("config.config")
 
 Thinker.display.rebuild()
 
+require("config.monitors")
 hl.monitor({
-    output = Thinker.display.list[1].name,
-    mode = "preffered",
-    position = "0x0",
-    scale = 1.25,
-    transform = 0
+    output = Monitors[1],
+    mode = "1920x1080@180",
+    position = "0x0"
 })
 
-if (#Thinker.display.list < 1) then
-    hl.monitor({
-        output = Thinker.display.list[2].name,
-        mode = "preffered",
-        position = "auto-right",
-        scale = 1,
-        transform = 0
-    })
-end
+hl.monitor({
+    output = Monitors[2],
+    mode = "1920x1080@180",
+    position = "auto-left",
+    transform = 1
+})
+
+hl.monitor({
+    output = "",
+    mode = "preffered",
+    position = "auto-up",
+})
 
 hl.on("monitor.added", function (m)
     hl.notification.create({

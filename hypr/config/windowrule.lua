@@ -11,7 +11,7 @@ hl.window_rule({
 hl.window_rule({
     name  = "wr-telegram-mover",
     match = {
-        class = ". *telegram.*",
+        class = ".*telegram.*",
     },
     workspace = "special:social",
 })
@@ -29,7 +29,7 @@ hl.window_rule({
 hl.window_rule({
     name  = "color-youtube",
     match = {
-        title = ". *YouTube.*",
+        title = ".*YouTube.*",
     },
     suppress_event = "fullscreenoutput",
     border_color = "rgb(ff0033)",

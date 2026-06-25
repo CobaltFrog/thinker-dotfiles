@@ -1,5 +1,7 @@
 [Ll][Oo][Cc]!*
 *!*
 hypr/settings.*
+superfile/theme*
+!superfile/theme/thinker*
 waybar/monitors.*
 !*.exmpl

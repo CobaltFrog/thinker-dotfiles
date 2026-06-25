@@ -2,29 +2,47 @@
 require("config.color")
 require("config.config")
 
+Thinker.display.rebuild()
+
 hl.monitor({
-    output = Thinker.display.m0name,
-    mode = "1920x1080@180",
+    output = Thinker.display.list[1].name,
+    mode = "preffered",
     position = "0x0",
-    scale = 1,
+    scale = 1.25,
     transform = 0
 })
 
-hl.monitor({
-    output = Thinker.display.m1name,
-    mode = "1920x1080@180",
-    position = "-1080x-300",
-    scale = 1,
-    transform = 1
-})
+if (#Thinker.display.list < 1) then
+    hl.monitor({
+        output = Thinker.display.list[2].name,
+        mode = "preffered",
+        position = "auto-right",
+        scale = 1,
+        transform = 0
+    })
+end
 
--- auto monitor
-hl.monitor({
-    output   = "",
-    mode     = "preffered",
-    position = "auto",
-    scale    = "auto",
-})
+hl.on("monitor.added", function (m)
+    hl.notification.create({
+        text = "display " .. m.name .. " added",
+        timeout = 3000,
+        color = Thinker.Colors.accent_normal,
+        font_size = 14
+    })
+    Thinker.display.rebuild()
+    Thinker.workspace.rebuild()
+end)
+
+hl.on("monitor.removed", function (m)
+    hl.notification.create({
+        text = "display " .. m.name .. " removed",
+        timeout = 3000,
+        color = Thinker.Colors.accent_normal,
+        font_size = 14
+    })
+    Thinker.display.rebuild()
+    Thinker.workspace.rebuild();
+end)
 
 -- env variables
 require("config.environment")

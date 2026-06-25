@@ -7,7 +7,7 @@ hl.config({
         gaps_in = 4,
         gaps_out = 4,
 
-        layout = Get_layout(Thinker.current_layout_index),
+        layout = Thinker.workspace.get_layout(Thinker.current_layout_index),
 
         ["col.inactive_border"] = Thinker.Colors.background_normal,
         ["col.active_border"] = Thinker.Colors.foreground_normal,
@@ -44,7 +44,7 @@ hl.config({
         inactive_opacity = 1,
         fullscreen_opacity = 1,
         blur = {
-            enabled = true,
+            enabled = false,
             size = 3,
             passes = 2,
             noise = 0.03,

@@ -9,17 +9,15 @@ local mod = "SUPER"
 
 hl.bind(mod .. "+" .. "Q", hl.dsp.window.close())
 hl.bind(mod .. "+" .. "F", hl.dsp.window.float())
-hl.bind("ALT" .. "+" .. "tab", hl.dsp.window.cycle_next())
-hl.bind("CONTROL" .. "+" .. "tab", hl.dsp.focus({ last = true }))
 hl.bind(mod .. "+" .. "tab", hl.dsp.window.cycle_next())
 hl.bind(mod .. "+" .. "left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mod .. "+" .. "up", hl.dsp.focus({ direction = "up" }))
 hl.bind(mod .. "+" .. "right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mod .. "+" .. "down", hl.dsp.focus({ direction = "down" }))
 hl.bind(mod .. "+" .. "H", hl.dsp.focus({ direction = "left" }))
+hl.bind(mod .. "+" .. "J", hl.dsp.focus({ direction = "down" }))
 hl.bind(mod .. "+" .. "K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mod .. "+" .. "L", hl.dsp.focus({ direction = "right" }))
-hl.bind(mod .. "+" .. "J", hl.dsp.focus({ direction = "down" }))
 
 -- __        _____  ____  _  ______  ____   _    ____ _____ 
 -- \ \      / / _ \|  _ \| |/ / ___||  _ \ / \  / ___| ____|
@@ -80,20 +78,15 @@ hl.bind("SHIFT" .. "+" .. "Print", hl.dsp.exec_cmd("grim -g $(slurp -w 0)-| swap
 
 -- Applications map
 hl.bind(mod .. "+" .. "A", hl.dsp.submap("APPS"))
-hl.define_submap("APPS", function()
-    local function exec_raw_reset(cmd)
-        hl.dispatch(hl.dsp.exec_raw(cmd))
-        hl.dispatch(hl.dsp.submap("reset"))
-    end
-
-    hl.bind("B", function() exec_raw_reset(Thinker.uwsm_cmd .. " " .. Thinker.apps.browser) end)
-    hl.bind("F", function() exec_raw_reset(Thinker.uwsm_cmd .. " " .. Thinker.apps.filer) end)
-    hl.bind("T", function() exec_raw_reset(Thinker.uwsm_cmd .. " " .. Thinker.apps.terminal .. " -e btop") end)
-    hl.bind("C", function() exec_raw_reset(Thinker.uwsm_cmd .. " hyprpicker -anzq --format=hex") end)
-    hl.bind("M", function() exec_raw_reset(Thinker.uwsm_cmd .. " " .. Thinker.apps.messenger) end)
-    hl.bind("R", function() exec_raw_reset(Thinker.uwsm_cmd .. " remmina") end)
-    hl.bind("V", function() exec_raw_reset(Thinker.uwsm_cmd .. " pavucontrol") end)
-    hl.bind("S", function() exec_raw_reset(Thinker.uwsm_cmd .. " steam") end)
+hl.define_submap("APPS", "reset", function()
+    hl.bind("B", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.browser))
+    hl.bind("F", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.filer))
+    hl.bind("T", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.terminal .. " -e btop"))
+    hl.bind("C", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " hyprpicker -anzq --format=hex"))
+    hl.bind("M", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.messenger))
+    hl.bind("R", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " remmina"))
+    hl.bind("V", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " pavucontrol"))
+    hl.bind("S", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " steam"))
 
     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
 end)
@@ -105,6 +98,7 @@ hl.define_submap("RESIZE", function()
     hl.bind("J", hl.dsp.window.resize({ x =   0, y =  15, relative = true}), { repeating = true })
     hl.bind("K", hl.dsp.window.resize({ x =   0, y = -15, relative = true}), { repeating = true })
     hl.bind("L", hl.dsp.window.resize({ x =  15, y =   0, relative = true}), { repeating = true })
+
     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
 end)
 
@@ -114,39 +108,50 @@ hl.define_submap("MOVE", function()
     hl.bind("H", hl.dsp.window.move({ x = -20, y  =   0, relative = true }), { repeating = true })
     hl.bind("J", hl.dsp.window.move({ x =   0, y  =  20, relative = true }), { repeating = true })
     hl.bind("K", hl.dsp.window.move({ x =   0, y  = -20, relative = true }), { repeating = true })
-    hl.bind("L", hl.dsp.window.move({ x = 20, y  =   0, relative = true }), { repeating = true })
+    hl.bind("L", hl.dsp.window.move({ x =  20, y  =   0, relative = true }), { repeating = true })
     hl.bind("SHIFT+H", hl.dsp.window.swap({ direction = "l"}))
     hl.bind("SHIFT+J", hl.dsp.window.swap({ direction = "d"}))
     hl.bind("SHIFT+K", hl.dsp.window.swap({ direction = "u"}))
     hl.bind("SHIFT+L", hl.dsp.window.swap({ direction = "r"}))
+
     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
 end)
 
 -- Workspaces manipulation
-hl.bind(mod .. "+" .. "W", hl.dsp.submap("WORKSPACE"))
+hl.bind(mod .. "+W", hl.dsp.submap("WORKSPACE"))
 hl.define_submap("WORKSPACE", function()
-    hl.bind("R", function()
-        Rotate_layout(1)
-    end)
-    hl.bind("D", function ()
-        Set_layout(1)
-    end)
-    hl.bind("M", function ()
-        Set_layout(2)
-    end)
-    hl.bind("S", function ()
-        Set_layout(3)
-    end)
-    hl.bind("O", function ()
-        Set_layout(4)
-    end)
+    hl.bind("J", function() Thinker.workspace.rotate_layout(1) end)
+    hl.bind("K", function() Thinker.workspace.rotate_layout(-1) end)
+
+    hl.bind("D", function () Thinker.workspace.set_layout(1) end)
+    hl.bind("M", function () Thinker.workspace.set_layout(2) end)
+    hl.bind("S", function () Thinker.workspace.set_layout(3) end)
+    hl.bind("O", function () Thinker.workspace.set_layout(4) end)
+
+    hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
+end)
+
+-- Monitors manipulation
+hl.bind(mod .. "+D", hl.dsp.submap("DISPLAY"))
+hl.define_submap("DISPLAY", function ()
+    hl.bind("U", function () Thinker.display.rotate_monitor(1) end)
+    hl.bind("D", function () Thinker.display.rotate_monitor(-1) end)
+
+    hl.bind("H", function () Thinker.display.set_monitor_position(1) end)
+    hl.bind("J", function () Thinker.display.set_monitor_position(2) end)
+    hl.bind("K", function () Thinker.display.set_monitor_position(3) end)
+    hl.bind("L", function () Thinker.display.set_monitor_position(4) end)
+
     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
 end)
 
 -- Cursor manipulation
-hl.bind(mod .. "+" .. "C", hl.dsp.submap("CURSOR"))
+hl.bind(mod .. "+C", hl.dsp.submap("CURSOR"))
 hl.define_submap("CURSOR", function()
-    hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
+    hl.bind("equal", function () Thinker.display.zoom(0.5) end)
+    hl.bind("minus", function () Thinker.display.zoom(-0.5) end)
+
+    hl.bind("ESCAPE", hl.dsp.submap("reset"), { release = true })
 end)
 
 -- Player control
@@ -213,5 +218,5 @@ hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
 
 -- SCREEN
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 1%+"), { locked = true })
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 1%-"), { locked = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_raw("brightnessctl -e4 -n2 set 1%+"), { locked = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_raw("brightnessctl -e4 -n2 set 1%-"), { locked = true })

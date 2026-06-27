@@ -24,7 +24,7 @@ hl.bind(mod .. "+" .. "L", hl.dsp.focus({ direction = "right" }))
 --  \ \ /\ / / | | | |_) | ' /\___ \| |_) / _ \| |   |  _|  
 --   \ V  V /| |_| |  _ <| . \ ___) |  __/ ___ \ |___| |___ 
 --    \_/\_/  \___/|_| \_\_|\_\____/|_| /_/   \_\____|_____|
---
+
 for i = 1, 10 do
     local keynum = i % 10
     hl.bind(mod .. "+" .. keynum, hl.dsp.focus({ workspace = i }))
@@ -49,6 +49,9 @@ hl.bind(mod .. "+" .. "SHIFT" .. "+" .. "mouse_down", hl.dsp.focus({ direction =
 hl.bind(mod .. "+" .. "mouse_down", hl.dsp.focus({ direction = "up" }))
 hl.bind(mod .. "+" .. "SHIFT" .. "+" .. "mouse_up", hl.dsp.focus({ direction = "right" }))
 hl.bind(mod .. "+" .. "mouse_up", hl.dsp.focus({ direction = "down" }))
+
+-- Zoom
+hl.bind(mod .. "+mouse:274", Thinker.display.zoom)
 
 --  _   _ _____ ___ _     ___ _____ ___ _____ ____  
 -- | | | |_   _|_ _| |   |_ _|_   _|_ _| ____/ ___| 
@@ -212,10 +215,10 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"), { locked = true })
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"))
+hl.bind("XF86AudioMicMute", Thinker.toggle_mic)
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true })
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_raw("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
 
 -- SCREEN
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_raw("brightnessctl -e4 -n2 set 1%+"), { locked = true })

@@ -7,6 +7,7 @@ local monitor_pos = { "auto-left", "auto-down", "auto-up", "auto-right" }
 
 Thinker = {}
 Thinker.uwsm_cmd = "uwsm app --"
+Thinker.mic_status = false
 
 Thinker.wallpaper = {}
 Thinker.wallpaper.script = "~/.config/hypr/scripts/wallpaper_switch.sh"
@@ -72,6 +73,7 @@ function Thinker.display.set_monitor_position(position_idx)
 end
 
 
+---@param offset number
 function Thinker.display.zoom(offset)
     local current = hl.get_config("cursor.zoom_factor")
     if offset ~= nil then
@@ -93,12 +95,54 @@ function Thinker.workspace.rebuild()
     for i = 1, Thinker.workspace.count do
         local monitor_index = ((i - 1) % #Thinker.display.list) + 1
 
-
         local display = Thinker.display.list[monitor_index].name
+
+        if display == nil then return end
 
         hl.workspace_rule({
             workspace = tostring(i),
             monitor = display
         })
     end
+end
+
+function Thinker.toggle_mic()
+    if Thinker.mic_status then
+        Thinker.set_mic(false)
+
+        -- hl.notification.create({
+        --     text = "mic OFF",
+        --     timeout = 3000,
+        --     color = Thinker.Colors.accent_normal,
+        --     font_size = 16
+        -- })
+
+        Thinker.mic_status = false
+        return
+    end
+
+    Thinker.set_mic(true)
+    -- hl.notification.create({
+    --     text = "mic ON",
+    --     timeout = 3000,
+    --     color = Thinker.Colors.accent_normal,
+    --     font_size = 16
+    -- })
+
+    Thinker.mic_status = true
+end
+
+---@param status boolean
+function Thinker.set_mic(status)
+    Thinker.mic_status = status
+    local value = nil
+
+    if status then
+        value = 0
+    else
+        value = 1
+    end
+
+    hl.dispatch(hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ " .. value))
+    hl.dispatch(hl.dsp.exec_cmd("brightnessctl -d platform::micmute set " .. value))
 end

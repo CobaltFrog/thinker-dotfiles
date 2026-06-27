@@ -2,6 +2,7 @@
 require("config.color")
 require("config.config")
 
+Thinker.set_mic(false)
 Thinker.display.rebuild()
 
 require("config.monitors")
@@ -74,5 +75,6 @@ require("config.devices")
 require("config.binds")
 
 -- window and workspace rules
+Thinker.workspace.rebuild()
 require("config.windowrule")
 require("config.workspacerule")

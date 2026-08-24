@@ -1,36 +1,16 @@
 ---@module 'hl'
 require("config.color")
 require("config.config")
+require("config.functions")
 
 Thinker.set_mic(false)
-Thinker.display.rebuild()
-
-require("config.monitors")
-hl.monitor({
-    output = Monitors[1],
-    mode = "1920x1080@180",
-    position = "0x0"
-})
-
-hl.monitor({
-    output = Monitors[2],
-    mode = "1920x1080@180",
-    position = "auto-left",
-    transform = 1
-})
-
-hl.monitor({
-    output = "",
-    mode = "preffered",
-    position = "auto-up",
-})
 
 hl.on("monitor.added", function (m)
     hl.notification.create({
         text = "display " .. m.name .. " added",
         timeout = 3000,
         color = Thinker.Colors.accent_normal,
-        font_size = 14
+        font_size = 16
     })
     Thinker.display.rebuild()
     Thinker.workspace.rebuild()
@@ -41,11 +21,14 @@ hl.on("monitor.removed", function (m)
         text = "display " .. m.name .. " removed",
         timeout = 3000,
         color = Thinker.Colors.accent_normal,
-        font_size = 14
+        font_size = 16
     })
     Thinker.display.rebuild()
     Thinker.workspace.rebuild();
 end)
+
+Thinker.display.rebuild()
+Thinker.workspace.rebuild()
 
 -- env variables
 require("config.environment")
@@ -75,6 +58,5 @@ require("config.devices")
 require("config.binds")
 
 -- window and workspace rules
-Thinker.workspace.rebuild()
 require("config.windowrule")
 require("config.workspacerule")

@@ -1,5 +1,4 @@
 ---@module 'hl'
-
 hl.config({
     general = {
         border_size = 4,
@@ -9,10 +8,10 @@ hl.config({
 
         layout = Thinker.workspace.get_layout(Thinker.current_layout_index),
 
-        ["col.inactive_border"] = Thinker.Colors.background_normal,
-        ["col.active_border"] = Thinker.Colors.foreground_normal,
-        ["col.nogroup_border"] = Thinker.Colors.foreground_dark,
-        ["col.nogroup_border_active"] = Thinker.Colors.foreground_dark,
+        ["col.inactive_border"] = Thinker.color.background_normal,
+        ["col.active_border"] = Thinker.color.foreground_normal,
+        ["col.nogroup_border"] = Thinker.color.foreground_dark,
+        ["col.nogroup_border_active"] = Thinker.color.foreground_dark,
 
         snap = {
             enabled = true,
@@ -44,7 +43,7 @@ hl.config({
         inactive_opacity = 1,
         fullscreen_opacity = 1,
         blur = {
-            enabled = false,
+            enabled = true,
             size = 3,
             passes = 2,
             noise = 0.03,
@@ -53,12 +52,12 @@ hl.config({
     },
 })
 
-hl.curve("popup", { type = "spring", mass = 1, stiffness = 35, dampening = 6 })
+hl.curve("popup", { type = "spring", mass = 1, stiffness = 400, dampening = 17 })
 hl.curve("line", { type = "bezier", points = { {0, 0}, {1, 1}}})
 hl.curve("inout", { type = "bezier", points = { {0.19, 1}, {0.22, 1.05}}})
 
-hl.animation({ leaf = "windows",     enabled = true, speed = 4, spring = "popup", style = "popin" })
-hl.animation({ leaf = "windowsMove", enabled = true, speed = 4, bezier = "inout", style = "gnomed" })
-hl.animation({ leaf = "workspaces",  enabled = true, speed = 4, bezier = "inout", style = "fade" })
+hl.animation({ leaf = "windows",     enabled = true, speed = 1, spring = "popup", style = "popin" })
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 1, bezier = "inout", style = "gnomed" })
+hl.animation({ leaf = "workspaces",  enabled = true, speed = 1, bezier = "inout", style = "fade" })
 
 hl.animation({ leaf = "border", enabled = true, speed = 2, bezier = "line" })

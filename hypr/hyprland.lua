@@ -1,34 +1,34 @@
 ---@module 'hl'
-require("config.color")
 require("config.config")
+require("config.color")
 require("config.functions")
 
 Thinker.set_mic(false)
 
 hl.on("monitor.added", function (m)
-    hl.notification.create({
-        text = "display " .. m.name .. " added",
-        timeout = 3000,
-        color = Thinker.Colors.accent_normal,
-        font_size = 16
-    })
     Thinker.display.rebuild()
     Thinker.workspace.rebuild()
+    hl.notification.create({
+        text = "Display " .. m.name .. " added.\nWorkspaces 1 - " .. Thinker.workspace.count .. " rebuilded.",
+        timeout = 3000,
+        color = Thinker.color.accent_normal,
+        font_size = 18
+    })
 end)
 
 hl.on("monitor.removed", function (m)
-    hl.notification.create({
-        text = "display " .. m.name .. " removed",
-        timeout = 3000,
-        color = Thinker.Colors.accent_normal,
-        font_size = 16
-    })
     Thinker.display.rebuild()
-    Thinker.workspace.rebuild();
+    Thinker.workspace.rebuild()
+    hl.notification.create({
+        text = "Display " .. m.name .. " removed.\nWorkspaces 1 - " .. Thinker.workspace.count .. " rebuilded.",
+        timeout = 3000,
+        color = Thinker.color.accent_normal,
+        font_size = 18
+    })
 end)
 
 Thinker.display.rebuild()
-Thinker.workspace.rebuild()
+Thinker.workspace.rebuild();
 
 -- env variables
 require("config.environment")

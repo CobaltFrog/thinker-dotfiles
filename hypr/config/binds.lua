@@ -19,6 +19,15 @@ hl.bind(mod .. "+" .. "J", hl.dsp.focus({ direction = "down" }))
 hl.bind(mod .. "+" .. "K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mod .. "+" .. "L", hl.dsp.focus({ direction = "right" }))
 
+hl.bind("SUPER + X", function ()
+    if hl.get_workspace("special:minimized") then
+        hl.dispatch(hl.dsp.window.move({ workspace = hl.get_active_workspace(), window = "tag:minimized" }))
+        hl.dispatch(hl.dsp.window.clear_tags({ window = "tag:minimized" }))
+    else
+        hl.dispatch(hl.dsp.window.tag({ tag = "minimized", window = hl.get_active_window() }))
+        hl.dispatch(hl.dsp.window.move({ workspace = "special:minimized", follow = false }))
+    end
+end)
 -- __        _____  ____  _  ______  ____   _    ____ _____ 
 -- \ \      / / _ \|  _ \| |/ / ___||  _ \ / \  / ___| ____|
 --  \ \ /\ / / | | | |_) | ' /\___ \| |_) / _ \| |   |  _|  
@@ -28,7 +37,7 @@ hl.bind(mod .. "+" .. "L", hl.dsp.focus({ direction = "right" }))
 for i = 1, 10 do
     local keynum = i % 10
     hl.bind(mod .. "+" .. keynum, hl.dsp.focus({ workspace = i }))
-    hl.bind(mod .. "+" .. "SHIFT" .. "+" .. keynum, hl.dsp.window.move({ workspace = i }))
+    hl.bind(mod .. "+SHIFT+" .. keynum, hl.dsp.window.move({ workspace = i }))
     hl.bind(mod .. "+" .. "CONTROL" .. "+" .. keynum, hl.dsp.window.move({ workspace = i, follow = false }))
 end
 
@@ -91,7 +100,7 @@ hl.define_submap("APPS", "reset", function()
     hl.bind("V", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " pavucontrol"))
     hl.bind("S", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " steam"))
 
-    hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
+    hl.bind("catchall", hl.dsp.submap("reset"), { locked = true })
 end)
 
 -- Window size
@@ -112,10 +121,13 @@ hl.define_submap("MOVE", function()
     hl.bind("J", hl.dsp.window.move({ x =   0, y  =  20, relative = true }), { repeating = true })
     hl.bind("K", hl.dsp.window.move({ x =   0, y  = -20, relative = true }), { repeating = true })
     hl.bind("L", hl.dsp.window.move({ x =  20, y  =   0, relative = true }), { repeating = true })
-    hl.bind("SHIFT+H", hl.dsp.window.swap({ direction = "l"}))
-    hl.bind("SHIFT+J", hl.dsp.window.swap({ direction = "d"}))
-    hl.bind("SHIFT+K", hl.dsp.window.swap({ direction = "u"}))
-    hl.bind("SHIFT+L", hl.dsp.window.swap({ direction = "r"}))
+
+    hl.bind("C", hl.dsp.window.center())
+
+    hl.bind("SHIFT+H", hl.dsp.window.move({ direction = "l"}))
+    hl.bind("SHIFT+J", hl.dsp.window.move({ direction = "d"}))
+    hl.bind("SHIFT+K", hl.dsp.window.move({ direction = "u"}))
+    hl.bind("SHIFT+L", hl.dsp.window.move({ direction = "r"}))
 
     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
 end)
@@ -131,7 +143,7 @@ hl.define_submap("WORKSPACE", function()
     hl.bind("S", function () Thinker.workspace.set_layout(3) end)
     hl.bind("O", function () Thinker.workspace.set_layout(4) end)
 
-    hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
+    hl.bind("catchall", hl.dsp.submap("reset"), { locked = true })
 end)
 
 -- Monitors manipulation
@@ -145,7 +157,7 @@ hl.define_submap("DISPLAY", function ()
     hl.bind("K", function () Thinker.display.set_monitor_position(3) end)
     hl.bind("L", function () Thinker.display.set_monitor_position(4) end)
 
-    hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
+    hl.bind("catchall", hl.dsp.submap("reset"), { locked = true })
 end)
 
 -- Cursor manipulation
@@ -154,7 +166,7 @@ hl.define_submap("CURSOR", function()
     hl.bind("equal", function () Thinker.display.zoom(0.5) end)
     hl.bind("minus", function () Thinker.display.zoom(-0.5) end)
 
-    hl.bind("ESCAPE", hl.dsp.submap("reset"), { release = true })
+    hl.bind("catchall", hl.dsp.submap("reset"), { release = true })
 end)
 
 -- Player control
@@ -183,6 +195,7 @@ hl.define_submap("PLAYER", function()
     sh -c 'notify-send -u normal "󰝚 $(playerctl metadata xesam:title)" "󰠃 $(playerctl metadata xesam:artist)\n󰎆 $(playerctl metadata xesam:album)"'
     ]]))
 
+    hl.bind("catchall", function() end)
     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
 end)
 --
@@ -197,6 +210,7 @@ hl.define_submap("BACKGROUND", function()
     hl.bind("R", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wrandom " .. Thinker.wallpaper.dir))
     hl.bind("G", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wload"))
 
+    hl.bind("catchall", function() end)
     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
 end)
 --  _  _________   ______   ___    _    ____  ____  
@@ -209,6 +223,11 @@ end)
 hl.bind("XF86Search", hl.dsp.exec_cmd("local_var_cmd_start_app local_var_appsMenu"))
 hl.bind("XF86Explorer", hl.dsp.exec_cmd("local_var_cmd_start_app local_var_fileManager"))
 hl.bind("XF86Calculator", hl.dsp.exec_cmd("local_var_cmd_start_app local_var_terminal -e calc"))
+hl.bind("XF86Favorites", hl.dsp.exec_raw("~/.config/hypr/scripts/lock.sh"))
+
+--bluetooth
+hl.bind("XF86HangupPhone", hl.dsp.exec_raw("bluetoothctl power off"))
+hl.bind("XF86PickupPhone", hl.dsp.exec_raw("bluetoothctl power on"))
 
 -- MEDIA
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
@@ -220,6 +239,29 @@ hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true })
 hl.bind("XF86AudioMute", hl.dsp.exec_raw("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
 
+
 -- SCREEN
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_raw("brightnessctl -e4 -n2 set 1%+"), { locked = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_raw("brightnessctl -e4 -n2 set 1%-"), { locked = true })
+
+--   ____ _____ ____ _____ _   _ ____  _____ ____  
+--  / ___| ____/ ___|_   _| | | |  _ \| ____/ ___| 
+-- | |  _|  _| \___ \ | | | | | | |_) |  _| \___ \ 
+-- | |_| | |___ ___) || | | |_| |  _ <| |___ ___) |
+--  \____|_____|____/ |_|  \___/|_| \_\_____|____/ 
+
+hl.gesture({
+    fingers = 3,
+    direction = "horizontal",
+    action = "workspace",
+    scale = 0.8
+})
+
+hl.gesture({
+    fingers = 2,
+    direction = "pinch",
+    mods = mod,
+    action = "cursorZoom",
+    zoom_level = 1.5,
+    mode = "mult"
+})

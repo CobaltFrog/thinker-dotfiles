@@ -5,3 +5,4 @@ superfile/theme*
 !superfile/theme/thinker*
 waybar/monitors.*
 !*.exmpl
+btop.conf

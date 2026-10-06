@@ -13,16 +13,15 @@
         "mpris"
     ],
 
-    "modules-center": [
-        "group/information"
-    ],
+    // "modules-center": [
+    //     "group/information"
+    // ],
 
     "modules-right": [
         "group/hardware",
         "group/system",
         "group/time"
     ],
-
 
 //  ____ _   _ ____ _____ ___  __  __ 
 // / ___| | | / ___|_   _/ _ \|  \/  |
@@ -73,6 +72,13 @@
     "custom/lock": {
         "format": "󰌾",
         "on-click": "~/.config/hypr/scripts/lock.sh",
+        "tooltip": false
+    },
+
+    "custom/wallpaper-switch": {
+        "format": "󰋩",
+        "on-click": "~/.config/hypr/scripts/wallpaper_switch.sh -wnext /home/cfrog/wallpaper/",
+        "on-click-right": "~/.config/hypr/scripts/wallpaper_switch.sh -wprev /home/cfrog/wallpaper/",
         "tooltip": false
     },
 
@@ -205,7 +211,7 @@
     "network": {
         "interval": 2,
         "format": "{ifname}",
-        "format-alt": "󰩠 {ipaddr}",
+        "format-alt": "󰩠 {ipaddr} | 󰇚 {bandwidthTotalBytes}",
         "format-ethernet": "󰛳",
         "format-wifi": "{icon}",
         "format-disconnetcted": "󰲛",
@@ -218,7 +224,7 @@
         ],
         "tooltip": true,
         "tooltip-format": "󱫋 {ifname}\n󰩠 {ipaddr}/{cidr}\n󱂇 {gwaddr}\n󰇚 {bandwidthDownBytes}\n󰕒 {bandwidthUpBytes}",
-        "tooltip-format-ethernet": "󱫋 {ifname}\n󰩠 {ipaddr}/{cidr}\n󱂇 {gwaddr}\n󰇚 {bandwidthDownBytes}\n󰕒 {bandwidthUpBytes}",
+        "tooltip-format-ethernet": "󱫋 {ifname}\n󰩠 {ipaddr}/{cidr}\n󱂇 {gwaddr}\n\n󰈀 {linkSpeed}\n󰇚 {bandwidthDownBytes}\n󰕒 {bandwidthUpBytes}",
         "tooltip-format-wifi": "{icon} {essid}@{frequency} Hz\n󱫋 {ifname}\n󰩠 {ipaddr}/{cidr}\n󱂇 {gwaddr}\n󰇚 {bandwidthDownBytes}\n󰕒 {bandwidthUpBytes}",
         "tooltip-format-disconnected": "",
         "tooltip-format-disabled": ""
@@ -259,8 +265,8 @@
     },
 
     "clock": {
-        "format": "{:%H:%M}",
-        "format-alt": "{:%d.%m.%Y}",
+        "format": "{:%H:%M | %d.%m.%Y}",
+        "format-alt": "{:%H:%M}",
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "mode": "month",
@@ -361,6 +367,7 @@
         "orientation": "inherit",
         "modules": [
             "custom/separator-left",
+            "custom/wallpaper-switch",
             "tray",
             "custom/separator-right"
         ]

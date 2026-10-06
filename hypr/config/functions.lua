@@ -107,27 +107,27 @@ function Thinker.workspace.rebuild()
 end
 
 function Thinker.toggle_mic()
+    local current_notif = {
+        text = "",
+        timeout = 1000,
+        icon = "Info",
+        color = Thinker.color.accent_normal,
+        font_size = 18
+    }
+
     if Thinker.mic_status then
         Thinker.set_mic(false)
 
-        -- hl.notification.create({
-        --     text = "mic OFF",
-        --     timeout = 3000,
-        --     color = Thinker.Colors.accent_normal,
-        --     font_size = 16
-        -- })
+        current_notif.text = "mic OFF"
+        hl.notification.create(current_notif)
 
         Thinker.mic_status = false
         return
     end
 
     Thinker.set_mic(true)
-    -- hl.notification.create({
-    --     text = "mic ON",
-    --     timeout = 3000,
-    --     color = Thinker.Colors.accent_normal,
-    --     font_size = 16
-    -- })
+    current_notif.text = "mic ON"
+    hl.notification.create(current_notif);
 
     Thinker.mic_status = true
 end

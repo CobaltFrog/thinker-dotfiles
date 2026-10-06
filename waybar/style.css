@@ -55,7 +55,6 @@ tooltip label {
 
 /* Waybar-modules */
 .modules-right,
-.modules-center,
 .modules-left {
     margin: 4px 4px;
     background-color: @background-normal;
@@ -71,6 +70,7 @@ tooltip label {
 }
 
 /*General modules style*/
+#custom-wallpaper-switch,
 #power-profiles-daemon,
 #temperature,
 #wireplumber,
@@ -118,7 +118,7 @@ tooltip label {
 
 #temperature.warning,
 #battery.warning {
-    color: @foreground-light;
+    color: @warning-color;
 }
 
 #temperature.critical,

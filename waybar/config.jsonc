@@ -91,7 +91,7 @@
         "on-click": "playerctl next",
         "on-click-right": "playerctl previous",
         "on-click-middle": "playerctl play-pause",
-        "format": "{status_icon} | {dynamic} | {player_icon} ",
+        "format": " {status_icon} | {dynamic} | {player_icon} ",
         "dynamic-order": [
             "title",
             "artist"
@@ -266,19 +266,52 @@
 
     "cava": {
         "cava_config": "$XDG_CONFIG_HOME/cava/config-raw",
-        "hide_on_silence": true,
+        "hide_on_silence": false,
+        "noice_reduction": 0.3,
+        "format_silent": ">",
         "sleep_timer": 1,
+        "bar_delimiter": 0,
         "bars": 16,
         "format-icons" : [
+            // "⣀⣀",
+            // "⡠⢄",
+            // "⠤⠤",
+            // "⠔⠢",
+            // "⠒⠒",
+            // "⠊⠑",
+            // "⠉⠉"
+
             "⣀",
-            "⣄",
+            "⣠",
             "⣤",
-            "⣦",
+            "⣴",
             "⣶",
-            "⣷",
+            "⣾",
             "⣿"
-        ],
-        "bar_delimiter": 0
+
+            // "⡀",
+            // "⡄",
+            // "⡆",
+            // "⡇"
+
+            // "▁",
+            // "▂",
+            // "▃",
+            // "▄",
+            // "▅",
+            // "▆",
+            // "▇"
+
+            // "1",
+            // "2",
+            // "3",
+            // "4",
+            // "5",
+            // "6",
+            // "7",
+            // "8",
+            // "9"
+        ]
     },
 
     "clock": {

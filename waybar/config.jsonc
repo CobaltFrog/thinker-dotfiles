@@ -211,8 +211,8 @@
     "network": {
         "interval": 2,
         "format": "{ifname}",
-        "format-alt": "󰩠 {ipaddr} | 󰇚 {bandwidthTotalBytes}",
-        "format-ethernet": "󰛳",
+        "format-alt": "󰩠 {ipaddr}/{cidr}",
+        "format-ethernet": "󰛳 {ipaddr} | 󰢋 {bandwidthTotalBytes:=}",
         "format-wifi": "{icon}",
         "format-disconnetcted": "󰲛",
         "format-disabled": "󰱟",
@@ -224,7 +224,7 @@
         ],
         "tooltip": true,
         "tooltip-format": "󱫋 {ifname}\n󰩠 {ipaddr}/{cidr}\n󱂇 {gwaddr}\n󰇚 {bandwidthDownBytes}\n󰕒 {bandwidthUpBytes}",
-        "tooltip-format-ethernet": "󱫋 {ifname}\n󰩠 {ipaddr}/{cidr}\n󱂇 {gwaddr}\n\n󰈀 {linkSpeed}\n󰇚 {bandwidthDownBytes}\n󰕒 {bandwidthUpBytes}",
+        "tooltip-format-ethernet": "󱫋 {ifname}\n󰩠 {ipaddr}/{cidr}\n󱂇 {gwaddr}\n󰈀 {linkSpeed}\n󰇚 {bandwidthDownBytes}\n󰕒 {bandwidthUpBytes}",
         "tooltip-format-wifi": "{icon} {essid}@{frequency} Hz\n󱫋 {ifname}\n󰩠 {ipaddr}/{cidr}\n󱂇 {gwaddr}\n󰇚 {bandwidthDownBytes}\n󰕒 {bandwidthUpBytes}",
         "tooltip-format-disconnected": "",
         "tooltip-format-disabled": ""

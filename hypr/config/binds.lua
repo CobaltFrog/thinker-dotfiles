@@ -79,8 +79,7 @@ hl.bind(mod .. "+" .. "R", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " tofi-drun"))
 hl.bind(mod .. "+" .. "SHIFT" .. "+" .. "R", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " tofi-run"))
 hl.bind(mod .. "+" .. "V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu| cliphist decode| wl-copy"))
 hl.bind(mod .. "+" .. "CONTROL" .. "+" .. "V", hl.dsp.exec_cmd("cliphist wipe & notify-send Wiped clipboard list:  $(cliphist list)"))
-hl.bind("Print", hl.dsp.exec_cmd("grim"))
-hl.bind("SHIFT" .. "+" .. "Print", hl.dsp.exec_cmd("grim -g $(slurp -w 0)-| swappy -f-"))
+hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 
 --  ____  _   _ ____  __  __    _    ____  ____  
 -- / ___|| | | | __ )|  \/  |  / \  |  _ \/ ___| 
@@ -89,19 +88,19 @@ hl.bind("SHIFT" .. "+" .. "Print", hl.dsp.exec_cmd("grim -g $(slurp -w 0)-| swap
 -- |____/ \___/|____/|_|  |_/_/   \_\_|   |____/ 
 
 -- Applications map
-hl.bind(mod .. "+" .. "A", hl.dsp.submap("APPS"))
-hl.define_submap("APPS", "reset", function()
-    hl.bind("B", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.browser))
-    hl.bind("F", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.filer))
-    hl.bind("T", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.terminal .. " -e btop"))
-    hl.bind("C", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " hyprpicker -anzq --format=hex"))
-    hl.bind("M", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.messenger))
-    hl.bind("R", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " remmina"))
-    hl.bind("V", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " pavucontrol"))
-    hl.bind("S", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " steam"))
-
-    hl.bind("catchall", hl.dsp.submap("reset"), { locked = true })
-end)
+-- hl.bind(mod .. "+" .. "A", hl.dsp.submap("APPS"))
+-- hl.define_submap("APPS", "reset", function()
+--     hl.bind("B", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.browser))
+--     hl.bind("F", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.filer))
+--     hl.bind("T", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.terminal .. " -e btop"))
+--     hl.bind("C", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " hyprpicker -anzq --format=hex"))
+--     hl.bind("M", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " " .. Thinker.apps.messenger))
+--     hl.bind("R", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " remmina"))
+--     hl.bind("V", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " pavucontrol"))
+--     hl.bind("S", hl.dsp.exec_raw(Thinker.uwsm_cmd .. " steam"))
+--
+--     hl.bind("catchall", hl.dsp.submap("reset"), { locked = true })
+-- end)
 
 -- Window size
 hl.bind(mod .. "+" .. "S", hl.dsp.submap("RESIZE"))

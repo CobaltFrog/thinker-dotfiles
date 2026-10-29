@@ -199,19 +199,19 @@ hl.define_submap("PLAYER", function()
 end)
 --
 -- wallpaper control
-hl.bind(mod .. "+" .. "B", hl.dsp.submap("BACKGROUND"))
-hl.define_submap("BACKGROUND", function()
-    hl.bind("H", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wdirprev " .. Thinker.wallpaper.dir))
-    hl.bind("J", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wnext " .. Thinker.wallpaper.dir))
-    hl.bind("K", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wprev " .. Thinker.wallpaper.dir))
-    hl.bind("L", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wdirnext " .. Thinker.wallpaper.dir))
-
-    hl.bind("R", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wrandom " .. Thinker.wallpaper.dir))
-    hl.bind("G", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wload"))
-
-    hl.bind("catchall", function() end)
-    hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
-end)
+-- hl.bind(mod .. "+" .. "B", hl.dsp.submap("BACKGROUND"))
+-- hl.define_submap("BACKGROUND", function()
+--     hl.bind("H", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wdirprev " .. Thinker.wallpaper.dir))
+--     hl.bind("J", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wnext " .. Thinker.wallpaper.dir))
+--     hl.bind("K", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wprev " .. Thinker.wallpaper.dir))
+--     hl.bind("L", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wdirnext " .. Thinker.wallpaper.dir))
+--
+--     hl.bind("R", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wrandom " .. Thinker.wallpaper.dir))
+--     hl.bind("G", hl.dsp.exec_cmd(Thinker.wallpaper.script .. " -wload"))
+--
+--     hl.bind("catchall", function() end)
+--     hl.bind("ESCAPE", hl.dsp.submap("reset"), { locked = true })
+-- end)
 --  _  _________   ______   ___    _    ____  ____  
 -- | |/ / ____\ \ / / __ ) / _ \  / \  |  _ \|  _ \ 
 -- | ' /|  _|  \ V /|  _ \| | | |/ _ \ | |_) | | | |

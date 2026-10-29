@@ -33,7 +33,9 @@ Thinker.workspace.rebuild();
 -- env variables
 require("config.environment")
 
-hl.permission({ binary = "/usr/bin/hyprlock", type = "screencopy", mode = "allow" })
+hl.permission({ binary = "/usr/bin/hyprlock",   type = "screencopy", mode = "allow" })
+hl.permission({ binary = "/usr/bin/hyprpicker", type = "screencopy", mode = "allow" })
+hl.permission({ binary = "/usr/bin/hyprpm",     type = "plugin", mode = "allow" })
 
 -- start
 require("config.exec")

@@ -1,10 +1,9 @@
 ---@module 'hl'
 hl.config({
     general = {
-        border_size = 4,
-
-        gaps_in = 4,
-        gaps_out = 4,
+        border_size = 0,
+        gaps_in = 0,
+        gaps_out = 0,
 
         layout = Thinker.workspace.get_layout(Thinker.current_layout_index),
 
@@ -12,14 +11,29 @@ hl.config({
         ["col.active_border"] = Thinker.color.foreground_normal,
         ["col.nogroup_border"] = Thinker.color.foreground_dark,
         ["col.nogroup_border_active"] = Thinker.color.foreground_dark,
-
-        snap = {
-            enabled = true,
-            window_gap = 8,
-            monitor_gap = 8
-        },
     }
 })
+
+if hl.plugin.hyprbars ~= nil then
+    hl.config({
+        plugin = {
+            hyprbars = {
+                enabled = true,
+
+                bar_height = 20,
+                bar_blur = false,
+                bar_part_of_window = false,
+
+                bar_text_size = 14,
+                bar_text_font = "JetBrains Nerd Mono",
+                bar_text_weight = "bold",
+
+                bar_color = Thinker.color.background_normal,
+                ["col.text"] = Thinker.color.foreground_normal,
+            }
+        }
+    })
+end
 
 hl.config({
     master = {
@@ -39,25 +53,8 @@ hl.config({
 hl.config({
     decoration = {
         rounding = 0,
-        active_opacity = 1,
-        inactive_opacity = 1,
-        fullscreen_opacity = 1,
-        blur = {
-            enabled = true,
-            size = 3,
-            passes = 2,
-            noise = 0.03,
-            vibrancy = 0.5,
-        },
+        blur = { enabled = false },
     },
 })
 
-hl.curve("popup", { type = "spring", mass = 1, stiffness = 400, dampening = 17 })
-hl.curve("line", { type = "bezier", points = { {0, 0}, {1, 1}}})
-hl.curve("inout", { type = "bezier", points = { {0.19, 1}, {0.22, 1.05}}})
-
-hl.animation({ leaf = "windows",     enabled = true, speed = 1, spring = "popup", style = "popin" })
-hl.animation({ leaf = "windowsMove", enabled = true, speed = 1, bezier = "inout", style = "gnomed" })
-hl.animation({ leaf = "workspaces",  enabled = true, speed = 1, bezier = "inout", style = "fade" })
-
-hl.animation({ leaf = "border", enabled = true, speed = 2, bezier = "line" })
+hl.animation({leaf = "global", enabled = false})

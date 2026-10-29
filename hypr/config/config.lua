@@ -19,7 +19,8 @@ Thinker.workspace.current_layout_index = 1
 Thinker.display = {}
 -- Add monitors in the order in which you want to map workspaces to them
 -- (for example, the first workspace will be assigned to the first monitor
--- when calling 'workspace.rebuild()', the second to the second monitor, and so on).
+-- when calling 'workspace.rebuild()', the second to the second monitor,
+-- third to the first again, and so on).
 Thinker.display.list = {
     {
         output = "DP-2",
